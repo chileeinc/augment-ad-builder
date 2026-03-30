@@ -1,0 +1,47 @@
+.tpl-cq {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  padding: 8cqw;
+}
+.cq-logos {
+  display: flex; gap: 3cqw;
+  margin-bottom: 7cqw;
+}
+.cq-customer-tag {
+  border: 1px solid var(--ad-border);
+  padding: 1.5cqw 3.5cqw;
+  font-family: var(--font-mono);
+  font-size: 2.2cqw; color: var(--ad-fg-dim);
+}
+.cq-quote {
+  font-size: 6.5cqw; font-weight: 300;
+  color: var(--ad-fg);
+  line-height: 1.2; letter-spacing: -0.02em;
+  flex: 1;
+}
+.cq-quote-mark {
+  font-size: 10cqw; color: var(--ad-accent);
+  line-height: 1; display: inline-block;
+  margin-right: 1cqw; vertical-align: -1cqw;
+  font-weight: 300;
+}
+.cq-attribution {
+  font-family: var(--font-mono);
+  font-size: 2.8cqw; color: var(--ad-fg-dim);
+  margin-top: 5cqw; line-height: 1.5;
+}
+.cq-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-top: 5cqw; padding-top: 4cqw;
+  border-top: 1px solid var(--ad-border);
+}
+.cq-cta {
+  font-family: var(--font-mono);
+  font-size: 2.5cqw; color: var(--ad-accent);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.cq-logo {
+  font-family: var(--font-mono);
+  font-size: 2.2cqw; color: var(--ad-fg-dim);
+}
