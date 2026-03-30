@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getFieldsForPurpose, getSizesForPlatform, TEMPLATES } from '../lib/config'
+import { getFieldsForPurpose, getSizesForPlatform, getSizeByKey, TEMPLATES } from '../lib/config'
 
 describe('getFieldsForPurpose', () => {
   it('returns headline, body, stat, statLabel, cta for product-feature', () => {
@@ -50,5 +50,15 @@ describe('TEMPLATES', () => {
       expect(t).toHaveProperty('name')
       expect(t).toHaveProperty('description')
     })
+  })
+})
+
+describe('getSizeByKey', () => {
+  it('returns the correct AdSize for a valid key', () => {
+    const size = getSizeByKey('instagram', '1:1')
+    expect(size).toEqual({ key: '1:1', label: '1:1 Square', width: 1080, height: 1080 })
+  })
+  it('throws for an unknown key', () => {
+    expect(() => getSizeByKey('instagram', 'unknown')).toThrow('Size unknown not found for platform instagram')
   })
 })
