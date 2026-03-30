@@ -1,26 +1,35 @@
+import { useState, useRef } from 'react'
+import type { AdConfig, Platform } from './lib/types'
+import { getSizesForPlatform } from './lib/config'
+import PlatformTabs from './components/PlatformTabs'
 import AdPreview from './components/AdPreview'
-import type { AdConfig } from './lib/types'
 import './App.css'
 
-const testConfig: AdConfig = {
+const DEFAULT_CONFIG: AdConfig = {
   platform: 'instagram',
   purpose: 'product-feature',
   template: 'big-type-body',
   theme: 'dark',
-  background: 'dot-grid',
+  background: 'none',
   sizeKey: '1:1',
   showLogo: true,
-  copy: {
-    headline: 'Code faster with AI that knows your codebase.',
-    body: 'Augment indexes your entire repo so suggestions are always in context.',
-    stat: '10×',
-    statLabel: 'faster context',
-    cta: 'Try free →',
-  },
+  copy: {},
   imageUrl: null,
 }
 
 export default function App() {
+  const [config, setConfig] = useState<AdConfig>(DEFAULT_CONFIG)
+  const previewRef = useRef<HTMLDivElement>(null)
+
+  function handlePlatformChange(platform: Platform) {
+    const sizes = getSizesForPlatform(platform)
+    setConfig(c => ({ ...c, platform, sizeKey: sizes[0].key }))
+  }
+
+  function updateConfig(patch: Partial<AdConfig>) {
+    setConfig(c => ({ ...c, ...patch }))
+  }
+
   return (
     <div className="app">
       <header className="topbar">
@@ -28,19 +37,16 @@ export default function App() {
         <span className="topbar-sep">/</span>
         <span className="topbar-title">Ad Builder</span>
       </header>
-      <nav className="platform-tabs">
-        <button className="platform-tab active">Instagram</button>
-        <button className="platform-tab">LinkedIn</button>
-        <button className="platform-tab">X / Twitter</button>
-      </nav>
+      <PlatformTabs value={config.platform} onChange={handlePlatformChange} />
       <div className="main">
         <aside className="left-panel">
+          {/* panels will be added in subsequent tasks */}
           <div className="panel-section">
             <div className="section-label">Ad Purpose</div>
           </div>
         </aside>
         <main className="right-panel">
-          <AdPreview config={testConfig} />
+          <AdPreview ref={previewRef} config={config} />
         </main>
       </div>
     </div>
