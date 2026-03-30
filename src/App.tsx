@@ -1,4 +1,24 @@
+import AdPreview from './components/AdPreview'
+import type { AdConfig } from './lib/types'
 import './App.css'
+
+const testConfig: AdConfig = {
+  platform: 'instagram',
+  purpose: 'product-feature',
+  template: 'big-type-body',
+  theme: 'dark',
+  background: 'dot-grid',
+  sizeKey: '1:1',
+  showLogo: true,
+  copy: {
+    headline: 'Code faster with AI that knows your codebase.',
+    body: 'Augment indexes your entire repo so suggestions are always in context.',
+    stat: '10×',
+    statLabel: 'faster context',
+    cta: 'Try free →',
+  },
+  imageUrl: null,
+}
 
 export default function App() {
   return (
@@ -20,7 +40,7 @@ export default function App() {
           </div>
         </aside>
         <main className="right-panel">
-          <p style={{ color: '#333', fontFamily: 'var(--font-mono)', fontSize: 11 }}>Preview will appear here</p>
+          <AdPreview config={testConfig} />
         </main>
       </div>
     </div>
