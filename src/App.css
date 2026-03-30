@@ -1,0 +1,85 @@
+.app { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+/* Top bar */
+.topbar {
+  height: 48px;
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.topbar-logo { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--color-accent); letter-spacing: 0.04em; }
+.topbar-sep { color: var(--color-border-subtle); }
+.topbar-title { font-size: 12px; color: var(--color-fg-dim); }
+
+/* Platform tabs */
+.platform-tabs {
+  height: 44px;
+  background: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 20px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.platform-tab {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-fg-dim);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: var(--font-sans);
+  transition: color 0.1s;
+  user-select: none;
+}
+.platform-tab:hover { color: var(--color-fg-muted); }
+.platform-tab.active { color: var(--color-fg); border-bottom-color: var(--color-accent); }
+
+/* Main split */
+.main { flex: 1; display: flex; overflow: hidden; }
+
+/* Left panel */
+.left-panel {
+  width: 300px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.panel-section {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-fg-dimmer);
+  margin-bottom: 10px;
+}
+
+/* Right panel */
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #0d0d10;
+  padding: 24px;
+  overflow: auto;
+}

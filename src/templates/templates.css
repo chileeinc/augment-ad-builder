@@ -1,0 +1,79 @@
+/* ─── Ad canvas base ─── */
+.ad-canvas {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+/* ─── Theme: Dark (default) ─── */
+.theme-dark {
+  --ad-bg: #0a0a0b;
+  --ad-fg: #f5f5f7;
+  --ad-fg-muted: #888888;
+  --ad-fg-dim: #555555;
+  --ad-accent: #1AA049;
+  --ad-border: #1e1e26;
+  --ad-border-subtle: #2a2a35;
+  background-color: var(--ad-bg);
+  color: var(--ad-fg);
+}
+
+/* ─── Theme: Light ─── */
+.theme-light {
+  --ad-bg: #ffffff;
+  --ad-fg: #111111;
+  --ad-fg-muted: #666666;
+  --ad-fg-dim: #999999;
+  --ad-accent: #1AA049;
+  --ad-border: #e5e5e7;
+  --ad-border-subtle: #d0d0d4;
+  background-color: var(--ad-bg);
+  color: var(--ad-fg);
+}
+
+/* ─── Theme: Tonal ─── */
+.theme-tonal {
+  --ad-bg: #002400;
+  --ad-fg: #e8e8ec;
+  --ad-fg-muted: #5CCC76;
+  --ad-fg-dim: #2a5a2a;
+  --ad-accent: #5CCC76;
+  --ad-border: #1a3a1a;
+  --ad-border-subtle: #0d2a0d;
+  background-color: var(--ad-bg);
+  color: var(--ad-fg);
+}
+
+/* ─── Background: Dot Grid ─── */
+.bg-dot-grid.theme-dark {
+  background-image: radial-gradient(circle, #2a2a35 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.bg-dot-grid.theme-light {
+  background-image: radial-gradient(circle, #c8c8d2 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.bg-dot-grid.theme-tonal {
+  background-image: radial-gradient(circle, #0d2e0d 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ─── Background: Fine Grid ─── */
+.bg-fine-grid.theme-dark {
+  background-image:
+    linear-gradient(to right, #1e1e26 1px, transparent 1px),
+    linear-gradient(to bottom, #1e1e26 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.bg-fine-grid.theme-light {
+  background-image:
+    linear-gradient(to right, #e0e0e8 1px, transparent 1px),
+    linear-gradient(to bottom, #e0e0e8 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.bg-fine-grid.theme-tonal {
+  background-image:
+    linear-gradient(to right, #0a2a0a 1px, transparent 1px),
+    linear-gradient(to bottom, #0a2a0a 1px, transparent 1px);
+  background-size: 28px 28px;
+}
