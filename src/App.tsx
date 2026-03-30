@@ -2,8 +2,8 @@ import { useState, useRef } from 'react'
 import type { AdConfig, Platform } from './lib/types'
 import { getSizesForPlatform } from './lib/config'
 import PlatformTabs from './components/PlatformTabs'
-import AdPreview from './components/AdPreview'
 import LeftPanel from './components/LeftPanel'
+import RightPanel from './components/RightPanel'
 import './App.css'
 
 const DEFAULT_CONFIG: AdConfig = {
@@ -41,9 +41,11 @@ export default function App() {
       <PlatformTabs value={config.platform} onChange={handlePlatformChange} />
       <div className="main">
         <LeftPanel config={config} onChange={updateConfig} />
-        <main className="right-panel">
-          <AdPreview ref={previewRef} config={config} />
-        </main>
+        <RightPanel
+          config={config}
+          previewRef={previewRef}
+          onSizeChange={(sizeKey) => updateConfig({ sizeKey })}
+        />
       </div>
     </div>
   )
