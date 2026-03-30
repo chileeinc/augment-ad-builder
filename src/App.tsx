@@ -3,6 +3,7 @@ import type { AdConfig, Platform } from './lib/types'
 import { getSizesForPlatform } from './lib/config'
 import PlatformTabs from './components/PlatformTabs'
 import AdPreview from './components/AdPreview'
+import LeftPanel from './components/LeftPanel'
 import './App.css'
 
 const DEFAULT_CONFIG: AdConfig = {
@@ -39,12 +40,7 @@ export default function App() {
       </header>
       <PlatformTabs value={config.platform} onChange={handlePlatformChange} />
       <div className="main">
-        <aside className="left-panel">
-          {/* panels will be added in subsequent tasks */}
-          <div className="panel-section">
-            <div className="section-label">Ad Purpose</div>
-          </div>
-        </aside>
+        <LeftPanel config={config} onChange={updateConfig} />
         <main className="right-panel">
           <AdPreview ref={previewRef} config={config} />
         </main>
