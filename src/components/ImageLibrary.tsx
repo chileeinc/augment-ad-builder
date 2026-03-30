@@ -37,22 +37,24 @@ export default function ImageLibrary({ selectedUrl, onSelect }: Props) {
     <div className="panel-section">
       <div className="section-label">Image</div>
       <div className="image-grid">
-        <div
+        <button
           className="upload-tile"
           onClick={() => fileInputRef.current?.click()}
           title="Upload image"
+          type="button"
         >
           {uploading ? '…' : '+'}
-        </div>
+        </button>
         {images.map(img => (
-          <div
+          <button
             key={img.id}
             className={`image-thumb${selectedUrl === img.url ? ' active' : ''}`}
             onClick={() => onSelect(selectedUrl === img.url ? null : img.url)}
             title={img.filename}
+            type="button"
           >
             <img src={img.url} alt={img.filename} loading="lazy" />
-          </div>
+          </button>
         ))}
       </div>
       <input

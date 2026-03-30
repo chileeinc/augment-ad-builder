@@ -138,6 +138,7 @@
   border: 1.5px solid var(--color-border-subtle);
   cursor: pointer; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
+  padding: 0;
 }
 .image-thumb:hover { border-color: var(--color-fg-dim); }
 .image-thumb.active { border-color: var(--color-accent); }
