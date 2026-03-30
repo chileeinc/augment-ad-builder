@@ -1,5 +1,4 @@
 import type { AdConfig } from '../lib/types'
-import './templates.css'
 import './StatHero.css'
 
 interface Props { config: AdConfig }

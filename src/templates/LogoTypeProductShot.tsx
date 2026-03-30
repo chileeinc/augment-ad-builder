@@ -1,5 +1,4 @@
 import type { AdConfig } from '../lib/types'
-import './templates.css'
 import './LogoTypeProductShot.css'
 
 interface Props { config: AdConfig }

@@ -1,5 +1,4 @@
 import type { AdConfig } from '../lib/types'
-import './templates.css'
 import './BigTypeBody.css'
 
 interface Props { config: AdConfig }
@@ -14,7 +13,7 @@ export default function BigTypeBody({ config }: Props) {
         {copy.body && <div className="btb-body">{copy.body}</div>}
       </div>
       <div className="btb-footer">
-        <div className="btb-proof">{copy.cta}</div>
+        {copy.cta && <div className="btb-proof">{copy.cta}</div>}
         {showLogo && <div className="btb-logo">augment code</div>}
       </div>
     </div>

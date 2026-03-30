@@ -1,7 +1,6 @@
 .tpl-ltps {
   width: 100%; height: 100%;
   display: flex; flex-direction: column;
-  background-color: var(--ad-bg);
 }
 .ltps-top {
   padding: 6cqw 7cqw 3cqw;
