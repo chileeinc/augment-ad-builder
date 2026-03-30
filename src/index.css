@@ -25,6 +25,9 @@
   /* Typography */
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  /* Canvas background (right panel — slightly elevated from --color-bg) */
+  --color-bg-canvas: #0d0d10;
 }
 
 html, body, #root {
@@ -34,4 +37,5 @@ html, body, #root {
   font-family: var(--font-sans);
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
