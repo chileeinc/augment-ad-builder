@@ -116,6 +116,7 @@
   border: 1px solid var(--color-border-subtle);
   position: relative; cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
+  padding: 0; flex-shrink: 0;
 }
 .toggle.on { background: var(--color-accent); border-color: var(--color-accent); }
 .toggle-knob {

@@ -51,9 +51,9 @@ export default function AppearancePanel({
       </div>
       <div className="toggle-row">
         <span className="toggle-label">Show Augment logo</span>
-        <div className={`toggle${showLogo ? ' on' : ''}`} onClick={() => onLogoChange(!showLogo)}>
+        <button className={`toggle${showLogo ? ' on' : ''}`} onClick={() => onLogoChange(!showLogo)} aria-pressed={showLogo}>
           <div className="toggle-knob" />
-        </div>
+        </button>
       </div>
     </div>
   )
