@@ -3,6 +3,7 @@ import PurposePicker from './PurposePicker'
 import TemplatePicker from './TemplatePicker'
 import AppearancePanel from './AppearancePanel'
 import CopyFields from './CopyFields'
+import ImageLibrary from './ImageLibrary'
 import './LeftPanel.css'
 
 interface Props {
@@ -34,7 +35,10 @@ export default function LeftPanel({ config, onChange }: Props) {
         copy={config.copy}
         onChange={(copy) => onChange({ copy })}
       />
-      {/* ImageLibrary added in next task */}
+      <ImageLibrary
+        selectedUrl={config.imageUrl}
+        onSelect={(imageUrl) => onChange({ imageUrl })}
+      />
     </aside>
   )
 }
