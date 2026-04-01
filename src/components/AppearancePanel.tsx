@@ -8,7 +8,7 @@ const THEMES: { id: Theme; label: string }[] = [
 const BACKGROUNDS: { id: Background; label: string }[] = [
   { id: 'none', label: 'None' },
   { id: 'dot-grid', label: 'Dots' },
-  { id: 'fine-grid', label: 'Grid' },
+  { id: 'grid', label: 'Grid' },
 ]
 
 interface Props {

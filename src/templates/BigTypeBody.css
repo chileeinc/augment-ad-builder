@@ -1,32 +1,35 @@
 .tpl-btb {
   width: 100%; height: 100%;
   display: flex; flex-direction: column;
-  padding: 8cqw;
-  gap: 5cqw;
+  padding: min(8cqw, 8cqh);
+  gap: min(5cqw, 5cqh);
 }
 .btb-logo {
-  width: 18cqw; color: var(--ad-fg);
+  width: min(18cqw, 18cqh); color: var(--ad-fg);
   flex-shrink: 0;
 }
-.btb-main { display: flex; flex-direction: column; flex: 1; }
+.btb-main {
+  display: flex; flex-direction: column;
+  flex: 1; min-height: 0;
+}
 .btb-company {
-  font-size: 3.5cqw; font-weight: 300;
+  font-size: min(3.5cqw, 6.5cqh); font-weight: 300;
   color: var(--ad-fg-muted);
-  margin-bottom: 4cqw;
+  margin-bottom: min(4cqw, 7cqh);
 }
 .btb-headline {
-  font-size: 9cqw; font-weight: 300;
+  font-size: min(9cqw, 16cqh); font-weight: 300;
   line-height: 1.1; letter-spacing: -0.025em;
   color: var(--ad-fg);
-  flex: 1;
+  flex: 1; min-height: 0; overflow: hidden;
 }
 .btb-body {
-  font-size: 3.5cqw; font-weight: 400;
+  font-size: min(3.5cqw, 6.5cqh); font-weight: 400;
   line-height: 1.45; color: var(--ad-fg-muted);
-  margin-top: 5cqw;
+  margin-top: min(5cqw, 5cqh);
 }
 .btb-footer {
-  padding-top: 4cqw;
+  padding-top: min(4cqw, 4cqh);
   border-top: 1px solid var(--ad-border);
   flex-shrink: 0;
 }
@@ -35,9 +38,9 @@
   background: var(--ad-accent);
   color: var(--ad-cta-text);
   font-family: var(--font-sans);
-  font-size: 3cqw;
+  font-size: min(3cqw, 5.5cqh);
   font-weight: 500;
-  padding: 1.5cqw 4cqw;
+  padding: min(1.5cqw, 2.5cqh) min(4cqw, 7cqh);
   border: none;
   border-radius: 2px;
   cursor: default;
