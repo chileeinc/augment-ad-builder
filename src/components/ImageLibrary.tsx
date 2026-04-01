@@ -11,22 +11,24 @@ interface Props {
 export default function ImageLibrary({ selectedUrl, onSelect }: Props) {
   const [images, setImages] = useState<LibImage[]>([])
   const [uploading, setUploading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    fetchImages().then(setImages).catch(console.error)
+    fetchImages().then(setImages).catch(err => setError(String(err?.message ?? err)))
   }, [])
 
   async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file) return
     setUploading(true)
+    setError(null)
     try {
       const img = await uploadImage(file)
       setImages(prev => [img, ...prev])
       onSelect(img.url)
-    } catch (err) {
-      console.error(err)
+    } catch (err: any) {
+      setError(err?.message ?? String(err))
     } finally {
       setUploading(false)
       if (fileInputRef.current) fileInputRef.current.value = ''
@@ -36,6 +38,7 @@ export default function ImageLibrary({ selectedUrl, onSelect }: Props) {
   return (
     <div className="panel-section">
       <div className="section-label">Image</div>
+      {error && <div className="upload-error">{error}</div>}
       <div className="image-grid">
         <button
           className="upload-tile"

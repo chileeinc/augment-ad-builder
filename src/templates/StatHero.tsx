@@ -1,4 +1,5 @@
 import type { AdConfig } from '../lib/types'
+import AugmentLogo from '../components/AugmentLogo'
 import './StatHero.css'
 
 interface Props { config: AdConfig }
@@ -12,7 +13,7 @@ export default function StatHero({ config }: Props) {
       {copy.headline && <div className="sh-headline">{copy.headline}</div>}
       <div className="sh-footer">
         {copy.cta && <div className="sh-cta">{copy.cta}</div>}
-        {showLogo && <div className="sh-logo">augment code</div>}
+        {showLogo && <div className="sh-logo"><AugmentLogo /></div>}
       </div>
     </div>
   )

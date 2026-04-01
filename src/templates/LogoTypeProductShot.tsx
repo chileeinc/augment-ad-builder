@@ -1,4 +1,5 @@
 import type { AdConfig } from '../lib/types'
+import AugmentLogo from '../components/AugmentLogo'
 import './LogoTypeProductShot.css'
 
 interface Props { config: AdConfig }
@@ -9,7 +10,7 @@ export default function LogoTypeProductShot({ config }: Props) {
     <div className="tpl-ltps">
       {showLogo && (
         <div className="ltps-top">
-          <div className="ltps-logo">[::] augment code</div>
+          <div className="ltps-logo"><AugmentLogo /></div>
         </div>
       )}
       {copy.headline && <div className="ltps-headline">{copy.headline}</div>}

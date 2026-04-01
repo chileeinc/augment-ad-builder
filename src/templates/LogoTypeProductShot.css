@@ -6,9 +6,7 @@
   padding: 6cqw 7cqw 3cqw;
 }
 .ltps-logo {
-  font-family: var(--font-mono);
-  font-size: 2.8cqw; font-weight: 500;
-  color: var(--ad-fg); letter-spacing: -0.01em;
+  width: 18cqw; color: var(--ad-fg);
 }
 .ltps-headline {
   padding: 0 7cqw;
