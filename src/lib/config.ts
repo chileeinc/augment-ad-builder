@@ -4,8 +4,6 @@ const FIELDS: Record<Purpose, CopyField[]> = {
   'product-feature': [
     { key: 'headline', label: 'Headline', type: 'input', maxLength: 80, placeholder: 'Code faster with AI that knows your codebase' },
     { key: 'body', label: 'Body', type: 'textarea', maxLength: 150, placeholder: 'Augment indexes your entire repo so suggestions are always in context.' },
-    { key: 'stat', label: 'Stat', type: 'input', maxLength: 20, placeholder: '10×' },
-    { key: 'statLabel', label: 'Stat label', type: 'input', maxLength: 40, placeholder: 'faster context' },
     { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Try free →' },
   ],
   'announcement': [
@@ -14,24 +12,15 @@ const FIELDS: Record<Purpose, CopyField[]> = {
     { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Learn more →' },
   ],
   'case-study': [
-    { key: 'companyName', label: 'Company name', type: 'input', maxLength: 40, placeholder: 'Verisk' },
-    { key: 'stat', label: 'Result stat', type: 'input', maxLength: 20, placeholder: '3×' },
-    { key: 'statLabel', label: 'Stat label', type: 'input', maxLength: 40, placeholder: 'faster onboarding' },
+    { key: 'companyName', label: 'Company', type: 'input', maxLength: 40, placeholder: 'Verisk' },
     { key: 'quote', label: 'Quote', type: 'textarea', maxLength: 160, placeholder: 'Augment eliminated our most painful dependency review process.' },
     { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Read case study →' },
   ],
   'customer-proof': [
-    { key: 'customerName', label: 'Customer name', type: 'input', maxLength: 40, placeholder: 'Sarah Chen' },
+    { key: 'customerName', label: 'Name', type: 'input', maxLength: 40, placeholder: 'Sarah Chen' },
     { key: 'customerTitle', label: 'Title / Company', type: 'input', maxLength: 60, placeholder: 'Staff Engineer, Acme Corp' },
     { key: 'quote', label: 'Quote', type: 'textarea', maxLength: 160, placeholder: 'Reduced our onboarding from weeks to days.' },
     { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Try free →' },
-  ],
-  'event': [
-    { key: 'eventName', label: 'Event name', type: 'input', maxLength: 60, placeholder: 'Augment at KubeCon' },
-    { key: 'date', label: 'Date', type: 'input', maxLength: 30, placeholder: 'Nov 12–15, 2026' },
-    { key: 'location', label: 'Location', type: 'input', maxLength: 60, placeholder: 'Chicago, IL — Booth #420' },
-    { key: 'body', label: 'Body', type: 'textarea', maxLength: 150, placeholder: 'Come meet the team and see live demos.' },
-    { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Register →' },
   ],
 }
 
@@ -52,10 +41,8 @@ const SIZES: Record<Platform, AdSize[]> = {
 }
 
 export const TEMPLATES: TemplateMeta[] = [
-  { id: 'big-type-body', name: 'Big Type + Body', description: 'Company name, light headline, accent body, proof footer' },
-  { id: 'logo-type-product-shot', name: 'Logo + Type + Product Shot', description: 'Logo top, light headline, image from library, CTA footer' },
-  { id: 'stat-hero', name: 'Stat Hero', description: 'Giant mono stat, light headline, CTA' },
-  { id: 'customer-quote', name: 'Customer Quote', description: 'Customer logos, pull quote, attribution, CTA' },
+  { id: 'big-type-body', name: 'Big Type + Body', description: 'Headline, body copy, CTA footer' },
+  { id: 'customer-quote', name: 'Customer Quote', description: 'Pull quote, attribution, CTA footer' },
 ]
 
 export function getFieldsForPurpose(purpose: Purpose): CopyField[] {

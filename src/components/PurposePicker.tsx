@@ -5,7 +5,6 @@ const PURPOSES: { id: Purpose; label: string }[] = [
   { id: 'announcement', label: 'Announcement' },
   { id: 'case-study', label: 'Case Study' },
   { id: 'customer-proof', label: 'Customer Proof' },
-  { id: 'event', label: 'Event' },
 ]
 
 interface Props {
