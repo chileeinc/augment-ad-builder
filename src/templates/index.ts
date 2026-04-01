@@ -1,6 +1,5 @@
-import type { TemplateId } from '../lib/types'
+import type { TemplateId, AdConfig } from '../lib/types'
 import type { ComponentType } from 'react'
-import type { AdConfig } from '../lib/types'
 import BigTypeBody from './BigTypeBody'
 import CustomerQuote from './CustomerQuote'
 
