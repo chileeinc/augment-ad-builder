@@ -4,10 +4,14 @@
   padding: min(8cqw, 8cqh);
   gap: min(5cqw, 5cqh);
 }
+
+/* Logo always top-right for Quote Ad */
 .cq-logo {
   width: min(22cqw, 22cqh); color: var(--ad-fg);
   flex-shrink: 0;
+  align-self: flex-end;
 }
+
 .cq-content {
   display: flex; flex-direction: column;
   flex: 1; min-height: 0;
@@ -47,16 +51,32 @@
   padding-top: min(2cqw, 2cqh);
   flex-shrink: 0;
 }
+
+/* CTA styles */
 .cq-cta {
   display: inline-block;
-  background: var(--ad-accent);
-  color: var(--ad-cta-text);
   font-family: var(--font-sans);
   font-size: min(3cqw, 5.5cqh);
   font-weight: 500;
   padding: min(1.5cqw, 2.5cqh) min(4cqw, 7cqh);
-  border: none;
   border-radius: 2px;
   cursor: default;
   letter-spacing: 0.01em;
+}
+.cq-cta.cta-style-filled {
+  background: var(--ad-accent);
+  color: var(--ad-cta-text);
+  border: none;
+}
+.cq-cta.cta-style-outline {
+  background: transparent;
+  color: var(--ad-accent);
+  border: 1.5px solid var(--ad-accent);
+}
+.cq-cta.cta-style-text-link {
+  background: transparent;
+  color: var(--ad-accent);
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
 }

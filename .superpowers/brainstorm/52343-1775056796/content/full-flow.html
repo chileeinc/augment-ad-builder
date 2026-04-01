@@ -1,0 +1,140 @@
+<h2>New Ad Builder — Full Flow</h2>
+<p class="subtitle">Three-step flow replacing the current form-based left panel</p>
+
+<div style="display:flex;flex-direction:column;gap:20px;max-width:900px">
+
+  <!-- Step 1 -->
+  <div style="border:1px solid #2a2a2a;background:#111;border-radius:6px;overflow:hidden">
+    <div style="background:#1a1a1a;padding:8px 14px;font-size:10px;font-family:monospace;color:#4ade80;letter-spacing:0.1em">STEP 1 — PROMPT + PLATFORM</div>
+    <div style="padding:14px;display:flex;gap:16px;align-items:flex-start">
+      <div style="flex:1">
+        <div style="font-size:11px;color:#666;font-family:monospace;margin-bottom:6px">DESCRIBE YOUR AD</div>
+        <div style="border:1px solid #333;background:#0a0a0b;padding:10px;font-size:12px;color:#aaa;min-height:60px;font-family:sans-serif">
+          "Augment allows users to be 10% quicker at dev speed"
+          <span style="border-left:2px solid #4ade80;animation:blink 1s infinite">&nbsp;</span>
+        </div>
+        <div style="font-size:10px;color:#555;margin-top:4px;font-family:monospace">Include stats, tone, audience, key benefit — anything relevant</div>
+      </div>
+      <div style="flex:0 0 180px">
+        <div style="font-size:11px;color:#666;font-family:monospace;margin-bottom:6px">WHERE WILL THIS LIVE?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+          <div style="border:2px solid #4ade80;background:#0f2a15;padding:6px;text-align:center;font-size:10px;color:#4ade80;font-family:monospace">LinkedIn</div>
+          <div style="border:1px solid #333;background:#0a0a0b;padding:6px;text-align:center;font-size:10px;color:#666;font-family:monospace">Instagram</div>
+          <div style="border:1px solid #333;background:#0a0a0b;padding:6px;text-align:center;font-size:10px;color:#666;font-family:monospace">X / Twitter</div>
+          <div style="border:1px solid #333;background:#0a0a0b;padding:6px;text-align:center;font-size:10px;color:#666;font-family:monospace">Reddit</div>
+          <div style="border:1px solid #333;background:#0a0a0b;padding:6px;text-align:center;font-size:10px;color:#666;font-family:monospace;grid-column:1/-1">Google Display</div>
+        </div>
+        <div style="margin-top:6px;font-size:9px;color:#555;font-family:monospace">→ determines export sizes</div>
+      </div>
+      <div style="flex:0 0 100px;display:flex;flex-direction:column;justify-content:flex-end">
+        <div style="background:#4ade80;color:#000;text-align:center;padding:8px;font-size:11px;font-weight:600;font-family:monospace;cursor:pointer;margin-top:20px">Generate →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrow -->
+  <div style="text-align:center;color:#333;font-size:18px">↓</div>
+
+  <!-- Step 2 -->
+  <div style="border:1px solid #2a2a2a;background:#111;border-radius:6px;overflow:hidden">
+    <div style="background:#1a1a1a;padding:8px 14px;font-size:10px;font-family:monospace;color:#4ade80;letter-spacing:0.1em">STEP 2 — REVIEW VARIATIONS</div>
+    <div style="padding:14px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px">
+
+        <!-- Variation 1 - selected -->
+        <div style="border:2px solid #4ade80;background:#0a0a0b;border-radius:4px;overflow:hidden">
+          <div style="aspect-ratio:1;padding:12px;display:flex;flex-direction:column;justify-content:space-between;background:#0a0a0b">
+            <div style="font-size:11px;font-weight:700;color:#fff;line-height:1.2">10% Faster Dev Speed</div>
+            <div>
+              <div style="height:1px;background:#1a1a1a;margin-bottom:6px"></div>
+              <div style="font-size:8px;color:#4ade80;background:#0f2a15;padding:2px 5px;display:inline-block">Try Augment →</div>
+            </div>
+          </div>
+          <div style="padding:6px 8px;background:#0f1a10;display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;gap:6px">
+              <span style="font-size:14px;cursor:pointer">👍</span>
+              <span style="font-size:14px;cursor:pointer;opacity:0.4">👎</span>
+            </div>
+            <span style="font-size:8px;color:#4ade80;font-family:monospace">selected</span>
+          </div>
+        </div>
+
+        <!-- Variation 2 -->
+        <div style="border:1px solid #2a2a2a;background:#0a0a0b;border-radius:4px;overflow:hidden">
+          <div style="aspect-ratio:1;padding:12px;display:flex;flex-direction:column;justify-content:space-between">
+            <div style="font-size:22px;font-weight:700;color:#4ade80;font-family:monospace;line-height:1">10%</div>
+            <div>
+              <div style="font-size:8px;color:#aaa;margin-bottom:6px">faster at every PR</div>
+              <div style="font-size:8px;color:#4ade80;background:#0f2a15;padding:2px 5px;display:inline-block">Try free →</div>
+            </div>
+          </div>
+          <div style="padding:6px 8px;background:#151515;display:flex;align-items:center;gap:6px">
+            <span style="font-size:14px;cursor:pointer;opacity:0.4">👍</span>
+            <span style="font-size:14px;cursor:pointer;opacity:0.4">👎</span>
+          </div>
+        </div>
+
+        <!-- Variation 3 - thumbs down with comment -->
+        <div style="border:1px solid #2a2a2a;background:#0a0a0b;border-radius:4px;overflow:hidden">
+          <div style="aspect-ratio:1;padding:12px;display:flex;flex-direction:column;justify-content:space-between;opacity:0.6">
+            <div style="font-size:8px;color:#aaa;font-style:italic;line-height:1.4">"Augment cut our review time by 10%. Every sprint."</div>
+            <div style="font-size:8px;color:#4ade80;background:#0f2a15;padding:2px 5px;display:inline-block">Read story →</div>
+          </div>
+          <div style="padding:6px 8px;background:#1a1010;display:flex;align-items:center;gap:6px">
+            <span style="font-size:14px;cursor:pointer;opacity:0.4">👍</span>
+            <span style="font-size:14px;cursor:pointer">👎</span>
+            <span style="font-size:8px;color:#f87171;font-family:monospace">too subtle</span>
+          </div>
+        </div>
+
+        <!-- Variation 4 -->
+        <div style="border:1px solid #2a2a2a;background:#0a0a0b;border-radius:4px;overflow:hidden">
+          <div style="aspect-ratio:1;padding:12px;display:flex;flex-direction:column;justify-content:space-between">
+            <div style="font-size:9px;font-weight:600;color:#eee;line-height:1.3;letter-spacing:0.02em">AUGMENT CODE</div>
+            <div style="flex:1;background:#111;margin:6px 0;display:flex;align-items:center;justify-content:center">
+              <span style="font-size:8px;color:#333">product shot</span>
+            </div>
+            <div style="font-size:8px;color:#4ade80;background:#0f2a15;padding:2px 5px;display:inline-block">Try free →</div>
+          </div>
+          <div style="padding:6px 8px;background:#151515;display:flex;align-items:center;gap:6px">
+            <span style="font-size:14px;cursor:pointer;opacity:0.4">👍</span>
+            <span style="font-size:14px;cursor:pointer;opacity:0.4">👎</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback bar -->
+      <div style="border:1px solid #2a2a2a;background:#0a0a0b;padding:8px 10px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:10px;color:#555;font-family:monospace;white-space:nowrap">Feedback to AI:</span>
+        <div style="flex:1;border:1px solid #333;background:#111;padding:5px 8px;font-size:10px;color:#aaa;font-family:sans-serif">"Make the stat more prominent, reduce body text"</div>
+        <div style="background:#1a2a1a;border:1px solid #4ade80;color:#4ade80;padding:5px 10px;font-size:10px;font-family:monospace;white-space:nowrap;cursor:pointer">↻ Regenerate</div>
+        <div style="background:#4ade80;color:#000;padding:5px 10px;font-size:10px;font-weight:600;font-family:monospace;white-space:nowrap;cursor:pointer">↓ Export</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrow -->
+  <div style="text-align:center;color:#333;font-size:18px">↓</div>
+
+  <!-- Step 3 -->
+  <div style="border:1px solid #2a2a2a;background:#111;border-radius:6px;overflow:hidden">
+    <div style="background:#1a1a1a;padding:8px 14px;font-size:10px;font-family:monospace;color:#4ade80;letter-spacing:0.1em">STEP 3 — EXPORT</div>
+    <div style="padding:14px;display:flex;gap:16px;align-items:center">
+      <div style="flex:1;font-size:11px;color:#888;font-family:monospace">
+        <div style="color:#eee;margin-bottom:4px">LinkedIn 1:1  <span style="color:#4ade80">↓ 1200×1200px</span></div>
+        <div style="color:#555;margin-bottom:4px">LinkedIn 1.91:1  <span style="color:#555">↓ 1200×628px</span></div>
+      </div>
+      <div style="font-size:10px;color:#555;font-family:monospace;max-width:200px">Sizes auto-determined by platform selection in Step 1. All sizes export at 2× resolution.</div>
+    </div>
+  </div>
+
+  <!-- Feedback storage note -->
+  <div style="border:1px solid #1a2a2a;background:#0a1015;border-radius:6px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start">
+    <span style="font-size:16px">🧠</span>
+    <div>
+      <div style="font-size:10px;color:#4ade80;font-family:monospace;margin-bottom:4px">PERSISTENT LEARNING</div>
+      <div style="font-size:11px;color:#666">Every thumbs up/down + comment + export is stored in Supabase. Future generations pull recent feedback as few-shot examples — "users disliked small logos, preferred prominent stats" — and the AI improves across sessions automatically.</div>
+    </div>
+  </div>
+
+</div>

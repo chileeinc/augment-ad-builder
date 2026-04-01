@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Template Variants</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0b; color: #e8e8ec; font-family: 'SF Mono', monospace; padding: 28px; }
+  h2 { font-size: 13px; color: #4ade80; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  .subtitle { font-size: 11px; color: #555; margin-bottom: 20px; }
+  .section { margin-bottom: 36px; }
+  .section-label { font-size: 10px; color: #4ade80; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px solid #1a2a1a; padding-bottom: 6px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .variant { display: flex; flex-direction: column; gap: 6px; }
+  .ad { aspect-ratio: 1; overflow: hidden; position: relative; flex-shrink: 0; }
+  .tag { font-size: 8px; color: #555; text-align: center; letter-spacing: 0.05em; }
+  .tag span { color: #4ade80; }
+
+  /* ── LINE EDITORIAL ads ── */
+  .le { background: #0a0a0b; border: 1px solid #1e1e26; }
+  .le-light { background: #fff; border: 1px solid #e5e5e7; }
+  .le-tonal { background: #002400; border: 1px solid #1a3a1a; }
+
+  .le-headline { font-family: 'SF Pro Display', 'Helvetica Neue', sans-serif; font-weight: 300; line-height: 1.15; position: absolute; top: 0; left: 0; right: 0; padding: 10% 10% 0; }
+  .le-footer { position: absolute; bottom: 0; left: 0; right: 0; height: 42%; padding: 0 8% 8%; display: flex; flex-direction: column; justify-content: flex-end; gap: 0; }
+  .le-logo { position: absolute; font-size: 5.5%; color: inherit; opacity: 0.5; }
+
+  /* lines */
+  .lines { display: flex; flex-direction: column; gap: 0; width: 100%; }
+  .line-row { display: flex; align-items: center; height: 12%; margin-bottom: 3%; position: relative; }
+  .line-solid { height: 2px; background: currentColor; }
+  .line-dashed { height: 2px; background: repeating-linear-gradient(to right, currentColor 0, currentColor 3px, transparent 3px, transparent 8px); }
+  .accent-sq { width: 8%; aspect-ratio: 1; background: #1AA049; flex-shrink: 0; }
+  .accent-sq-tonal { background: #99F7A9; }
+  .accent-sq-light { background: #1AA049; }
+  .cta-bar { height: 14%; background: #1AA049; display: flex; align-items: center; justify-content: center; font-size: 6%; font-weight: 600; color: #000; letter-spacing: 0.03em; margin-top: auto; }
+  .cta-bar-tonal { background: #99F7A9; color: #002400; }
+  .cta-bar-light { background: #1AA049; color: #fff; }
+
+  /* ── ILLUSTRATION ads ── */
+  .il { background: #0a0a0b; border: 1px solid #1e1e26; }
+  .il-tonal { background: #002400; border: 1px solid #1a3a1a; }
+  .il-light { background: #fff; border: 1px solid #e5e5e7; }
+  .il-headline { font-family: 'SF Pro Display', 'Helvetica Neue', sans-serif; font-weight: 300; line-height: 1.15; position: absolute; top: 0; left: 0; right: 0; padding: 10% 10% 0; }
+  .il-illus { position: absolute; bottom: -8%; left: -5%; right: -5%; height: 55%; overflow: hidden; }
+  .il-illus svg { width: 100%; height: 160%; position: absolute; bottom: 0; }
+  .il-logo-strip { position: absolute; bottom: 0; left: 0; right: 0; padding: 4% 8%; display: flex; justify-content: space-between; align-items: flex-end; z-index: 2; }
+</style>
+</head>
+<body>
+
+<h2>New Template Variants — AI would generate these</h2>
+<p class="subtitle">5 variants per template type. AI picks theme, copy angle, line config, and illustration.</p>
+
+<!-- ═══════════════════════════════════════════
+     TEMPLATE 1: LINE EDITORIAL
+═══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Template A — Line Editorial</div>
+  <div class="grid">
+
+    <!-- V1: Dark, sparse, no CTA -->
+    <div class="variant">
+      <div class="ad le" style="font-size:16px">
+        <div class="le-headline" style="color:#f5f5f7; font-size:130%">
+          10%<br>Faster
+        </div>
+        <div class="le-footer" style="color:#f5f5f7">
+          <div class="lines">
+            <div class="line-row"><div class="line-solid" style="width:100%"></div></div>
+            <div class="line-row" style="gap:4%">
+              <div class="accent-sq"></div>
+              <div class="line-dashed" style="flex:1"></div>
+            </div>
+            <div class="line-row"><div class="line-solid" style="width:62%"></div></div>
+            <div class="line-row"><div class="line-dashed" style="width:38%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="tag"><span>dark</span> · sparse · no CTA<br>metric-led headline</div>
+    </div>
+
+    <!-- V2: Dark, dense lines, with CTA -->
+    <div class="variant">
+      <div class="ad le" style="font-size:16px">
+        <div class="le-headline" style="color:#f5f5f7; font-size:105%">
+          Code faster<br>with full<br>context
+        </div>
+        <div class="le-footer" style="color:#f5f5f7">
+          <div class="lines">
+            <div class="line-row"><div class="line-dashed" style="width:100%"></div></div>
+            <div class="line-row"><div class="line-solid" style="width:78%"></div></div>
+            <div class="line-row"><div class="line-dashed" style="width:55%"></div></div>
+            <div class="line-row" style="gap:4%">
+              <div class="line-solid" style="flex:1"></div>
+              <div class="accent-sq"></div>
+            </div>
+          </div>
+          <div class="cta-bar" style="margin-top:6%">Try Augment free →</div>
+        </div>
+      </div>
+      <div class="tag"><span>dark</span> · dense · CTA<br>benefit headline</div>
+    </div>
+
+    <!-- V3: Tonal -->
+    <div class="variant">
+      <div class="ad le-tonal" style="font-size:16px">
+        <div class="le-headline" style="color:#99F7A9; font-size:115%">
+          Ship 3×<br>more code
+        </div>
+        <div class="le-footer" style="color:#99F7A9">
+          <div class="lines">
+            <div class="line-row"><div class="line-solid" style="width:100%"></div></div>
+            <div class="line-row" style="gap:4%">
+              <div class="accent-sq accent-sq-tonal"></div>
+              <div class="line-solid" style="width:45%"></div>
+              <div class="accent-sq accent-sq-tonal" style="width:5%"></div>
+            </div>
+            <div class="line-row"><div class="line-dashed" style="width:72%"></div></div>
+          </div>
+          <div class="cta-bar cta-bar-tonal" style="margin-top:8%">See benchmarks →</div>
+        </div>
+      </div>
+      <div class="tag"><span>tonal</span> · medium · CTA<br>stat headline</div>
+    </div>
+
+    <!-- V4: Light, minimal dashes -->
+    <div class="variant">
+      <div class="ad le-light" style="font-size:16px">
+        <div class="le-headline" style="color:#111; font-size:105%">
+          Every PR.<br>Full context.<br>Zero slowdown.
+        </div>
+        <div class="le-footer" style="color:#111">
+          <div class="lines">
+            <div class="line-row"><div class="line-dashed" style="width:100%"></div></div>
+            <div class="line-row"><div class="line-solid" style="width:50%"></div></div>
+            <div class="line-row" style="gap:4%">
+              <div class="line-dashed" style="flex:1"></div>
+              <div class="accent-sq accent-sq-light"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tag"><span>light</span> · minimal · no CTA<br>bold claim</div>
+    </div>
+
+    <!-- V5: Dark, asymmetric accent -->
+    <div class="variant">
+      <div class="ad le" style="font-size:16px">
+        <div class="le-headline" style="color:#f5f5f7; font-size:120%">
+          Augment<br>knows your<br>codebase
+        </div>
+        <div class="le-footer" style="color:#f5f5f7">
+          <div class="lines">
+            <div class="line-row" style="gap:4%">
+              <div class="accent-sq" style="width:12%"></div>
+              <div class="accent-sq" style="width:6%"></div>
+              <div class="line-solid" style="flex:1"></div>
+            </div>
+            <div class="line-row"><div class="line-dashed" style="width:88%"></div></div>
+            <div class="line-row"><div class="line-solid" style="width:40%"></div></div>
+            <div class="line-row"><div class="line-dashed" style="width:100%"></div></div>
+          </div>
+          <div class="cta-bar" style="margin-top:5%">Try free →</div>
+        </div>
+      </div>
+      <div class="tag"><span>dark</span> · multi-accent · CTA<br>brand awareness</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     TEMPLATE 2: ILLUSTRATION
+═══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-label">Template B — Illustration</div>
+  <div class="grid">
+
+    <!-- V1: Dark + concentric arcs (illus_1) -->
+    <div class="variant">
+      <div class="ad il" style="font-size:16px; position:relative">
+        <div class="il-headline" style="color:#f5f5f7; font-size:110%">
+          10% Faster<br>Dev Speed
+        </div>
+        <!-- Concentric arcs illustration -->
+        <div class="il-illus">
+          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:0;left:-10%;width:120%;height:auto">
+            <path d="M200 300 A250 250 0 0 1 -50 50" stroke="#1AA049" stroke-width="1.5"/>
+            <path d="M200 300 A200 200 0 0 1 0 100" stroke="#1AA049" stroke-width="1.5"/>
+            <path d="M200 300 A150 150 0 0 1 50 150" stroke="#1AA049" stroke-width="1.5"/>
+            <path d="M200 300 A100 100 0 0 1 100 200" stroke="#1AA049" stroke-width="1.5"/>
+            <line x1="200" y1="300" x2="-50" y2="50" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="-47" cy="52" r="6" fill="#1AA049"/>
+            <line x1="350" y1="150" x2="200" y2="150" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <line x1="350" y1="200" x2="200" y2="200" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <path d="M350 300 C350 150 350 100 200 100" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+          </svg>
+        </div>
+        <div class="il-logo-strip" style="color:#f5f5f7">
+          <span style="font-size:55%;opacity:0.5">augment code</span>
+          <span style="font-size:55%;color:#1AA049;background:#0a1a0a;padding:2px 6px">Try free →</span>
+        </div>
+      </div>
+      <div class="tag"><span>dark</span> · concentric arcs<br>metric headline</div>
+    </div>
+
+    <!-- V2: Dark + globe/ellipses (illus_3) -->
+    <div class="variant">
+      <div class="ad il" style="font-size:16px; position:relative">
+        <div class="il-headline" style="color:#f5f5f7; font-size:100%">
+          Code that<br>knows your<br>context
+        </div>
+        <div class="il-illus" style="left:-20%; right:-20%; height:60%">
+          <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:0;width:100%;height:auto">
+            <ellipse cx="250" cy="200" rx="160" ry="160" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <ellipse cx="210" cy="200" rx="90" ry="160" stroke="#1AA049" stroke-width="1.5"/>
+            <ellipse cx="150" cy="200" rx="60" ry="160" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <path d="M165 60 C170 60 175 65 178 80 C181 95 183 120 183 200 C183 280 181 305 178 320 C175 335 170 340 165 340 C160 340 155 335 152 320 C149 305 147 280 147 200 C147 120 149 95 152 80 C155 65 160 60 165 60 Z" stroke="#1AA049" stroke-width="1.5"/>
+            <circle cx="252" cy="320" r="7" fill="#1AA049"/>
+            <circle cx="360" cy="130" r="7" fill="#1AA049"/>
+            <circle cx="184" cy="196" r="7" fill="#1AA049"/>
+          </svg>
+        </div>
+        <div class="il-logo-strip" style="color:#f5f5f7">
+          <span style="font-size:55%;opacity:0.5">augment code</span>
+        </div>
+      </div>
+      <div class="tag"><span>dark</span> · globe/ellipses<br>benefit headline</div>
+    </div>
+
+    <!-- V3: Tonal + fibonacci circles (illus_8) -->
+    <div class="variant">
+      <div class="ad il-tonal" style="font-size:16px; position:relative">
+        <div class="il-headline" style="color:#99F7A9; font-size:110%">
+          Infinite<br>context.<br>Zero lag.
+        </div>
+        <div class="il-illus" style="left:-30%; right:-10%; height:58%">
+          <svg viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:0;width:100%;height:auto">
+            <circle cx="150" cy="150" r="145" stroke="#99F7A9" stroke-width="1.5"/>
+            <circle cx="370" cy="150" r="108" stroke="#99F7A9" stroke-width="1.5"/>
+            <circle cx="470" cy="150" r="85" stroke="#99F7A9" stroke-width="1.5"/>
+            <circle cx="490" cy="150" r="64" stroke="#99F7A9" stroke-width="1.5"/>
+            <circle cx="510" cy="150" r="44" stroke="#99F7A9" stroke-width="1.5"/>
+            <circle cx="526" cy="150" r="30" stroke="#99F7A9" stroke-width="1.5"/>
+            <circle cx="540" cy="150" r="17" stroke="#99F7A9" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="il-logo-strip" style="color:#99F7A9">
+          <span style="font-size:55%;opacity:0.6">augment code</span>
+          <span style="font-size:55%;color:#002400;background:#99F7A9;padding:2px 6px">Try free →</span>
+        </div>
+      </div>
+      <div class="tag"><span>tonal</span> · fibonacci circles<br>bold claim</div>
+    </div>
+
+    <!-- V4: Light + arcs -->
+    <div class="variant">
+      <div class="ad il-light" style="font-size:16px; position:relative">
+        <div class="il-headline" style="color:#111; font-size:100%">
+          Every<br>developer<br>10% faster
+        </div>
+        <div class="il-illus" style="left:10%; right:-20%; height:55%">
+          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:0;width:100%;height:auto">
+            <path d="M100 300 A220 220 0 0 1 -120 80" stroke="#1AA049" stroke-width="1.5"/>
+            <path d="M100 300 A170 170 0 0 1 -70 130" stroke="#1AA049" stroke-width="1.5"/>
+            <path d="M100 300 A120 120 0 0 1 -20 180" stroke="#1AA049" stroke-width="1.5"/>
+            <path d="M100 300 A80 80 0 0 1 20 220" stroke="#1AA049" stroke-width="1.5"/>
+            <line x1="100" y1="300" x2="-120" y2="80" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="-118" cy="82" r="5" fill="#1AA049"/>
+            <line x1="300" y1="130" x2="100" y2="130" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <line x1="300" y1="170" x2="100" y2="170" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+          </svg>
+        </div>
+        <div class="il-logo-strip" style="color:#111">
+          <span style="font-size:55%;opacity:0.4">augment code</span>
+          <span style="font-size:55%;color:#fff;background:#1AA049;padding:2px 6px">See benchmarks →</span>
+        </div>
+      </div>
+      <div class="tag"><span>light</span> · arcs · CTA<br>metric headline</div>
+    </div>
+
+    <!-- V5: Dark + globe, different angle + headline only -->
+    <div class="variant">
+      <div class="ad il" style="font-size:16px; position:relative">
+        <div class="il-headline" style="color:#f5f5f7; font-size:115%">
+          Your AI<br>pair programmer
+        </div>
+        <div class="il-illus" style="left:20%; right:-20%; height:62%">
+          <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:0;width:100%;height:auto">
+            <circle cx="280" cy="200" r="170" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="280" cy="200" r="130" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="280" cy="200" r="95" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <ellipse cx="230" cy="200" rx="50" ry="170" stroke="#1AA049" stroke-width="1.5"/>
+            <ellipse cx="280" cy="200" rx="50" ry="170" stroke="#1AA049" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="282" cy="340" r="7" fill="#1AA049"/>
+            <circle cx="430" cy="100" r="7" fill="#1AA049"/>
+          </svg>
+        </div>
+        <div class="il-logo-strip" style="color:#f5f5f7">
+          <span style="font-size:55%;opacity:0.5">augment code</span>
+        </div>
+      </div>
+      <div class="tag"><span>dark</span> · concentric circles<br>brand / awareness</div>
+    </div>
+
+  </div>
+</div>
+
+<div style="margin-top:8px;padding:10px 14px;background:#0a1010;border:1px solid #1a2a1a;font-size:10px;color:#555;max-width:100%">
+  <span style="color:#4ade80">How AI picks:</span> For Line Editorial — AI chooses line count, density, dash ratio, accent square placement, whether CTA is included.
+  For Illustration — AI picks illustration type based on message (data/precision → arcs; scale/global → globe; growth/progression → fibonacci circles).
+  Both respect theme selection derived from the prompt context.
+</div>
+
+</body>
+</html>

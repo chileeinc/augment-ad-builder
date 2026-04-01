@@ -1,0 +1,80 @@
+<h2>Where does the living doc live?</h2>
+<p class="subtitle">The AI's learned preferences need to be readable, auto-updating, and drive future generation</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Page inside the app — /knowledge</h3>
+      <p>A dedicated tab in the ad builder renders the current AI preferences as a readable doc. Auto-regenerates after every 10 feedback events (a Claude API call summarizes the raw feedback into structured markdown). No external tools needed.</p>
+      <div style="margin-top:10px;border:1px solid #2a2a2a;background:#0a0a0b;border-radius:4px;overflow:hidden">
+        <div style="background:#1a1a1a;padding:5px 10px;font-size:9px;font-family:monospace;color:#4ade80;display:flex;justify-content:space-between">
+          <span>AI KNOWLEDGE BASE</span>
+          <span style="color:#555">Last updated: 2026-04-01 · 47 events</span>
+        </div>
+        <div style="padding:10px;font-size:9px;font-family:monospace;color:#aaa;line-height:1.7">
+          <div style="color:#4ade80;margin-bottom:4px">## What performs well</div>
+          <div>- Metric-led headlines (👍 12/15 stat-hero variants)</div>
+          <div>- Dark theme preferred 3:1 over light</div>
+          <div>- Short CTAs: "Try free →" &gt; "Learn more"</div>
+          <div style="color:#4ade80;margin-top:8px;margin-bottom:4px">## What users reject</div>
+          <div>- Small logo placement (flagged 8×)</div>
+          <div>- Body text over 12 words</div>
+          <div style="color:#4ade80;margin-top:8px;margin-bottom:4px">## By platform</div>
+          <div>- LinkedIn → stat-hero performs best</div>
+          <div>- Instagram → big-type / bold claim</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Always current</span>
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">No extra tools</span>
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Viewable by anyone with app access</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Markdown file committed to the repo</h3>
+      <p>The app writes a <code style="background:#1a1a1a;padding:1px 4px;border-radius:2px">docs/ai-learnings.md</code> file in the GitHub repo via the GitHub API whenever preferences update. You can view it in GitHub, diff it over time with git history, and link to it from anywhere.</p>
+      <div style="margin-top:10px;border:1px solid #2a2a2a;background:#0a0a0b;border-radius:4px;padding:10px;font-size:9px;font-family:monospace;color:#aaa;line-height:1.6">
+        <div style="color:#555;margin-bottom:4px">github.com/chileeinc/augment-ad-builder</div>
+        <div style="color:#4ade80">docs/ai-learnings.md</div>
+        <div style="color:#555;margin-top:4px">Last commit: "chore: update AI learnings (47 events)"</div>
+        <div style="color:#555">2 hours ago · auto-generated</div>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Git history = learning history</span>
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Shareable link</span>
+        <span style="background:#2a1a1a;color:#f87171;padding:3px 8px;border-radius:3px;font-size:11px">Needs GitHub API token</span>
+        <span style="background:#2a1a1a;color:#f87171;padding:3px 8px;border-radius:3px;font-size:11px">More moving parts</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Both — app page + auto-commit to repo</h3>
+      <p>The app maintains the doc in Supabase (drives generation) and also pushes it to the GitHub repo as a markdown file on each update. Best visibility — viewable in the app AND tracked in git over time so you can see how the AI's preferences evolved.</p>
+      <div style="margin-top:10px;display:flex;gap:6px;font-size:9px;font-family:monospace;color:#aaa">
+        <div style="flex:1;border:1px solid #2a2a2a;background:#0a0a0b;padding:6px;border-radius:3px">
+          <div style="color:#4ade80;margin-bottom:3px">/knowledge page</div>
+          <div style="color:#555">Live view in app</div>
+          <div style="color:#555">Always current</div>
+        </div>
+        <div style="align-self:center;color:#333;font-size:14px">+</div>
+        <div style="flex:1;border:1px solid #2a2a2a;background:#0a0a0b;padding:6px;border-radius:3px">
+          <div style="color:#4ade80;margin-bottom:3px">docs/ai-learnings.md</div>
+          <div style="color:#555">Git history</div>
+          <div style="color:#555">Diffable over time</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Best visibility</span>
+        <span style="background:#1a2a2a;color:#c4b5fd;padding:3px 8px;border-radius:3px;font-size:11px">Slightly more to build</span>
+      </div>
+    </div>
+  </div>
+</div>

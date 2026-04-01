@@ -8,12 +8,13 @@ import './App.css'
 
 const DEFAULT_CONFIG: AdConfig = {
   platform: 'instagram',
-  purpose: 'product-feature',
-  template: 'big-type-body',
+  template: 'big-headline',
   theme: 'dark',
   background: 'none',
   sizeKey: '1:1',
   showLogo: true,
+  ctaStyle: 'filled',
+  logoPosition: 'top-left',
   copy: {},
   imageUrl: null,
 }

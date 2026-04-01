@@ -1,14 +1,14 @@
-import type { Purpose, CopyData } from '../lib/types'
-import { getFieldsForPurpose } from '../lib/config'
+import type { TemplateId, CopyData } from '../lib/types'
+import { getFieldsForTemplate } from '../lib/config'
 
 interface Props {
-  purpose: Purpose
+  template: TemplateId
   copy: CopyData
   onChange: (copy: CopyData) => void
 }
 
-export default function CopyFields({ purpose, copy, onChange }: Props) {
-  const fields = getFieldsForPurpose(purpose)
+export default function CopyFields({ template, copy, onChange }: Props) {
+  const fields = getFieldsForTemplate(template)
 
   function handleChange(key: keyof CopyData, value: string) {
     onChange({ ...copy, [key]: value })

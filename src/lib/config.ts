@@ -1,25 +1,15 @@
-import type { CopyField, Platform, AdSize, TemplateMeta, Purpose } from './types'
+import type { CopyField, Platform, AdSize, TemplateMeta, TemplateId } from './types'
 
-const FIELDS: Record<Purpose, CopyField[]> = {
-  'product-feature': [
+const FIELDS: Record<TemplateId, CopyField[]> = {
+  'big-headline': [
     { key: 'headline', label: 'Headline', type: 'input', maxLength: 80, placeholder: 'Code faster with AI that knows your codebase' },
     { key: 'body', label: 'Body', type: 'textarea', maxLength: 150, placeholder: 'Augment indexes your entire repo so suggestions are always in context.' },
     { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Try free →' },
   ],
-  'announcement': [
-    { key: 'headline', label: 'Headline', type: 'input', maxLength: 80, placeholder: 'Introducing Code Review by Augment' },
-    { key: 'body', label: 'Body', type: 'textarea', maxLength: 150, placeholder: 'Automated dependency analysis across your entire monorepo.' },
-    { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Learn more →' },
-  ],
-  'case-study': [
-    { key: 'companyName', label: 'Company', type: 'input', maxLength: 40, placeholder: 'Verisk' },
+  'quote-ad': [
     { key: 'quote', label: 'Quote', type: 'textarea', maxLength: 160, placeholder: 'Augment eliminated our most painful dependency review process.' },
-    { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Read case study →' },
-  ],
-  'customer-proof': [
     { key: 'customerName', label: 'Name', type: 'input', maxLength: 40, placeholder: 'Sarah Chen' },
-    { key: 'customerTitle', label: 'Title / Company', type: 'input', maxLength: 60, placeholder: 'Staff Engineer, Acme Corp' },
-    { key: 'quote', label: 'Quote', type: 'textarea', maxLength: 160, placeholder: 'Reduced our onboarding from weeks to days.' },
+    { key: 'customerTitle', label: 'Title & Company', type: 'input', maxLength: 60, placeholder: 'Staff Engineer, Acme Corp' },
     { key: 'cta', label: 'CTA', type: 'input', maxLength: 30, placeholder: 'Try free →' },
   ],
 }
@@ -41,12 +31,12 @@ const SIZES: Record<Platform, AdSize[]> = {
 }
 
 export const TEMPLATES: TemplateMeta[] = [
-  { id: 'big-type-body', name: 'Big Type + Body', description: 'Headline, body copy, CTA footer' },
-  { id: 'customer-quote', name: 'Customer Quote', description: 'Pull quote, attribution, CTA footer' },
+  { id: 'big-headline', name: 'Big Headline Ad', description: 'Headline, body copy, CTA footer' },
+  { id: 'quote-ad', name: 'Quote Ad', description: 'Pull quote, attribution, CTA footer' },
 ]
 
-export function getFieldsForPurpose(purpose: Purpose): CopyField[] {
-  return FIELDS[purpose]
+export function getFieldsForTemplate(template: TemplateId): CopyField[] {
+  return FIELDS[template]
 }
 
 export function getSizesForPlatform(platform: Platform): AdSize[] {

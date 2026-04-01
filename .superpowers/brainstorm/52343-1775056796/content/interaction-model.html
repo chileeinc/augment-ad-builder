@@ -1,0 +1,63 @@
+<h2>What's the core interaction model?</h2>
+<p class="subtitle">This shapes everything else — pick the one that feels right for your team's workflow</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Structured Form — Simplified</h3>
+      <p>User fills in <strong>Headline</strong>, <strong>CTA</strong>, picks a platform and theme. The layout adapts automatically based on what's filled in (image present → product shot layout, stat present → stat layout, otherwise → big type). No template picker. No purpose picker. Just fill and preview.</p>
+      <div style="margin-top:12px;padding:10px 12px;background:rgba(255,255,255,0.04);border-radius:4px;font-size:12px;color:#888;font-family:monospace">
+        Headline → "Augment makes devs 10% faster"<br>
+        CTA → "Try free"<br>
+        Theme → Dark<br>
+        Platform → LinkedIn<br>
+        <span style="color:#4ade80">▶ Preview updates live</span>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Fast to use</span>
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Predictable output</span>
+        <span style="background:#2a1a1a;color:#f87171;padding:3px 8px;border-radius:3px;font-size:11px">Less creative variety</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Prompt-Based — AI Generates Variations</h3>
+      <p>User types a description like <em>"Augment allows users to be 10% quicker at dev speed"</em>. AI parses this and auto-populates 3–4 design variations with different layouts, copy angles, and visual treatments. User picks the one they like and can tweak from there.</p>
+      <div style="margin-top:12px;padding:10px 12px;background:rgba(255,255,255,0.04);border-radius:4px;font-size:12px;color:#888;font-family:monospace">
+        Prompt → "Augment makes devs 10% faster at code reviews"<br>
+        <span style="color:#4ade80">▶ Generates 4 variations automatically</span><br>
+        &nbsp;&nbsp;[Big type: "10% Faster"] [Stat hero: 10%]<br>
+        &nbsp;&nbsp;[Quote: "dev speed..."] [Product shot]
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Creative range</span>
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Minimal input</span>
+        <span style="background:#2a1a1a;color:#f87171;padding:3px 8px;border-radius:3px;font-size:11px">Needs AI API</span>
+        <span style="background:#2a1a1a;color:#f87171;padding:3px 8px;border-radius:3px;font-size:11px">Less predictable</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hybrid — Prompt to Pre-fill Form</h3>
+      <p>User can either fill the form directly OR paste a prompt. If they use a prompt, AI pre-fills the fields (headline, CTA, picks layout) but the user keeps full control to edit before exporting. Best of both — low friction start, high-control finish.</p>
+      <div style="margin-top:12px;padding:10px 12px;background:rgba(255,255,255,0.04);border-radius:4px;font-size:12px;color:#888;font-family:monospace">
+        Prompt → "10% faster dev speed"<br>
+        <span style="color:#4ade80">▶ Auto-fills: Headline, CTA, Layout</span><br>
+        User edits fields if needed → Export
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Fast start</span>
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Full control</span>
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Incremental build</span>
+        <span style="background:#2a1a2a;color:#c4b5fd;padding:3px 8px;border-radius:3px;font-size:11px">More to build</span>
+      </div>
+    </div>
+  </div>
+</div>

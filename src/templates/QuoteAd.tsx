@@ -1,11 +1,12 @@
 import type { AdConfig } from '../lib/types'
 import AugmentLogo from '../components/AugmentLogo'
-import './CustomerQuote.css'
+import './QuoteAd.css'
 
 interface Props { config: AdConfig }
 
-export default function CustomerQuote({ config }: Props) {
-  const { copy, showLogo } = config
+export default function QuoteAd({ config }: Props) {
+  const { copy, showLogo, ctaStyle } = config
+  const ctaClass = `cq-cta cta-style-${ctaStyle}`
   return (
     <div className="tpl-cq">
       {showLogo && <div className="cq-logo"><AugmentLogo /></div>}
@@ -25,7 +26,7 @@ export default function CustomerQuote({ config }: Props) {
       )}
       {copy.cta && (
         <div className="cq-footer">
-          <button className="cq-cta">{copy.cta}</button>
+          <button className={ctaClass}>{copy.cta}</button>
         </div>
       )}
     </div>

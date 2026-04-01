@@ -1,8 +1,8 @@
 import { toPng, toSvg } from 'html-to-image'
 
-export function buildFilename(platform: string, purpose: string, sizeKey: string): string {
+export function buildFilename(platform: string, template: string, sizeKey: string): string {
   const clean = (s: string) => s.replace(/:/g, '-').replace(/\//g, '-')
-  return `augment-${clean(platform)}-${clean(purpose)}-${clean(sizeKey)}`
+  return `augment-${clean(platform)}-${clean(template)}-${clean(sizeKey)}`
 }
 
 function triggerDownload(dataUrl: string, filename: string) {

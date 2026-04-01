@@ -1,25 +1,15 @@
 import { describe, it, expect } from 'vitest'
-import { getFieldsForPurpose, getSizesForPlatform, getSizeByKey, TEMPLATES } from '../lib/config'
+import { getFieldsForTemplate, getSizesForPlatform, getSizeByKey, TEMPLATES } from '../lib/config'
 
-describe('getFieldsForPurpose', () => {
-  it('returns headline, body, cta for product-feature', () => {
-    const fields = getFieldsForPurpose('product-feature')
-    expect(fields.map(f => f.key)).toEqual(['headline', 'body', 'cta'])
+describe('getFieldsForTemplate', () => {
+  it('returns headline, body, cta for big-headline', () => {
+    const fields = getFieldsForTemplate('big-headline')
+    expect(fields.map((f: { key: string }) => f.key)).toEqual(['headline', 'body', 'cta'])
   })
 
-  it('returns headline, body, cta for announcement', () => {
-    const fields = getFieldsForPurpose('announcement')
-    expect(fields.map(f => f.key)).toEqual(['headline', 'body', 'cta'])
-  })
-
-  it('returns companyName, quote, cta for case-study', () => {
-    const fields = getFieldsForPurpose('case-study')
-    expect(fields.map(f => f.key)).toEqual(['companyName', 'quote', 'cta'])
-  })
-
-  it('returns customerName, customerTitle, quote, cta for customer-proof', () => {
-    const fields = getFieldsForPurpose('customer-proof')
-    expect(fields.map(f => f.key)).toEqual(['customerName', 'customerTitle', 'quote', 'cta'])
+  it('returns quote, customerName, customerTitle, cta for quote-ad', () => {
+    const fields = getFieldsForTemplate('quote-ad')
+    expect(fields.map((f: { key: string }) => f.key)).toEqual(['quote', 'customerName', 'customerTitle', 'cta'])
   })
 })
 

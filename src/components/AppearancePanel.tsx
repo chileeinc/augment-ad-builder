@@ -1,4 +1,4 @@
-import type { Theme, Background } from '../lib/types'
+import type { Theme, Background, CtaStyle, LogoPosition, TemplateId } from '../lib/types'
 
 const THEMES: { id: Theme; label: string }[] = [
   { id: 'dark', label: 'Dark' },
@@ -10,19 +10,35 @@ const BACKGROUNDS: { id: Background; label: string }[] = [
   { id: 'dot-grid', label: 'Dots' },
   { id: 'grid', label: 'Grid' },
 ]
+const CTA_STYLES: { id: CtaStyle; label: string }[] = [
+  { id: 'filled', label: 'Filled' },
+  { id: 'outline', label: 'Outline' },
+  { id: 'text-link', label: 'Text' },
+]
+const LOGO_POSITIONS: { id: LogoPosition; label: string }[] = [
+  { id: 'top-left', label: '↖' },
+  { id: 'top-right', label: '↗' },
+  { id: 'bottom-left', label: '↙' },
+  { id: 'bottom-right', label: '↘' },
+]
 
 interface Props {
+  template: TemplateId
   theme: Theme
   background: Background
   showLogo: boolean
+  ctaStyle: CtaStyle
+  logoPosition: LogoPosition
   onThemeChange: (t: Theme) => void
   onBackgroundChange: (b: Background) => void
   onLogoChange: (v: boolean) => void
+  onCtaStyleChange: (s: CtaStyle) => void
+  onLogoPositionChange: (p: LogoPosition) => void
 }
 
 export default function AppearancePanel({
-  theme, background, showLogo,
-  onThemeChange, onBackgroundChange, onLogoChange
+  template, theme, background, showLogo, ctaStyle, logoPosition,
+  onThemeChange, onBackgroundChange, onLogoChange, onCtaStyleChange, onLogoPositionChange
 }: Props) {
   return (
     <div className="panel-section">
@@ -49,12 +65,44 @@ export default function AppearancePanel({
           </button>
         ))}
       </div>
+
+      <div className="appearance-row-label">CTA Style</div>
+      <div className="cta-style-swatches">
+        {CTA_STYLES.map(s => (
+          <button
+            key={s.id}
+            className={`cta-style-swatch${ctaStyle === s.id ? ' active' : ''}`}
+            onClick={() => onCtaStyleChange(s.id)}
+          >
+            {s.label}
+          </button>
+        ))}
+      </div>
+
       <div className="toggle-row">
         <span className="toggle-label">Show Augment logo</span>
         <button className={`toggle${showLogo ? ' on' : ''}`} onClick={() => onLogoChange(!showLogo)} aria-pressed={showLogo}>
           <div className="toggle-knob" />
         </button>
       </div>
+
+      {showLogo && template === 'big-headline' && (
+        <>
+          <div className="appearance-row-label">Logo Position</div>
+          <div className="logo-position-swatches">
+            {LOGO_POSITIONS.map(p => (
+              <button
+                key={p.id}
+                className={`logo-pos-swatch${logoPosition === p.id ? ' active' : ''}`}
+                onClick={() => onLogoPositionChange(p.id)}
+                title={p.id.replace('-', ' ')}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   )
 }

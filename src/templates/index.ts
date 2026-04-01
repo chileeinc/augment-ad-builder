@@ -1,13 +1,13 @@
 import type { TemplateId, AdConfig } from '../lib/types'
 import type { ComponentType } from 'react'
-import BigTypeBody from './BigTypeBody'
-import CustomerQuote from './CustomerQuote'
+import BigHeadline from './BigHeadline'
+import QuoteAd from './QuoteAd'
 
 type TemplateComponent = ComponentType<{ config: AdConfig }>
 
 const TEMPLATE_COMPONENTS: Record<TemplateId, TemplateComponent> = {
-  'big-type-body': BigTypeBody,
-  'customer-quote': CustomerQuote,
+  'big-headline': BigHeadline,
+  'quote-ad': QuoteAd,
 }
 
 export function getTemplateComponent(id: TemplateId): TemplateComponent {

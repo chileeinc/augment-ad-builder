@@ -1,8 +1,9 @@
 export type Platform = 'instagram' | 'linkedin' | 'twitter'
-export type Purpose = 'product-feature' | 'announcement' | 'case-study' | 'customer-proof'
-export type TemplateId = 'big-type-body' | 'customer-quote'
+export type TemplateId = 'big-headline' | 'quote-ad'
 export type Theme = 'dark' | 'light' | 'tonal'
 export type Background = 'none' | 'dot-grid' | 'grid'
+export type CtaStyle = 'filled' | 'outline' | 'text-link'
+export type LogoPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
 
 export interface AdSize {
   key: string
@@ -23,7 +24,6 @@ export interface CopyData {
   headline?: string
   body?: string
   cta?: string
-  companyName?: string
   quote?: string
   customerName?: string
   customerTitle?: string
@@ -37,12 +37,13 @@ export interface TemplateMeta {
 
 export interface AdConfig {
   platform: Platform
-  purpose: Purpose
   template: TemplateId
   theme: Theme
   background: Background
   sizeKey: string
   showLogo: boolean
+  ctaStyle: CtaStyle
+  logoPosition: LogoPosition
   copy: CopyData
   imageUrl: string | null
 }

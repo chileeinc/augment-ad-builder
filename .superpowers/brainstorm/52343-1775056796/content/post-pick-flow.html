@@ -1,0 +1,72 @@
+<h2>After picking a variation, what happens?</h2>
+<p class="subtitle">How much control does the user need before exporting?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Pick → Export directly</h3>
+      <p>One click picks and immediately downloads. No editing step. If you don't like it, regenerate or pick a different variation. Maximum speed.</p>
+      <div style="margin-top:10px;display:flex;align-items:center;gap:8px;font-size:11px;color:#888;font-family:monospace">
+        <span style="color:#eee">[Variation 2]</span>
+        <span>→</span>
+        <span style="color:#4ade80;background:#0f2a15;padding:3px 8px">↓ PNG exported</span>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Fastest flow</span>
+        <span style="background:#2a1a1a;color:#f87171;padding:3px 8px;border-radius:3px;font-size:11px">No tweaking</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Pick → Appearance tweaks only</h3>
+      <p>Picking loads the variation into a slim right panel. User can adjust <strong>theme</strong> (dark/light/tonal), <strong>platform size</strong>, and <strong>background</strong> — but not rewrite the copy. The AI wrote it, now you just polish the look.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:flex-start">
+        <div style="flex:0 0 80px;border:1px solid #333;background:#0a0a0b;padding:8px;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="font-size:12px;font-weight:600;color:#fff">10%<br>Faster</div>
+          <div style="font-size:8px;color:#4ade80">Try free →</div>
+        </div>
+        <div style="flex:1;border:1px solid #333;background:#111;padding:8px;font-size:9px;font-family:monospace">
+          <div style="color:#666;margin-bottom:6px">APPEARANCE</div>
+          <div style="color:#eee;margin-bottom:3px">● Dark  ○ Light  ○ Tonal</div>
+          <div style="color:#eee;margin-bottom:3px">○ Dot grid  ● None</div>
+          <div style="margin-top:6px;color:#4ade80;background:#0f2a15;padding:3px;text-align:center">↓ Export PNG</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Fast + some control</span>
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Clean separation of AI vs human input</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Pick → Full editor (text + appearance)</h3>
+      <p>Picking loads the full current editor — user can edit headline, CTA, theme, platform, everything. The AI output is just a starting point. This is closest to the current builder but with a smarter entry point.</p>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:flex-start">
+        <div style="flex:1;border:1px solid #333;background:#111;padding:8px;font-size:9px;font-family:monospace">
+          <div style="color:#666;margin-bottom:6px">COPY</div>
+          <div style="color:#eee;margin-bottom:3px">Headline: "10% Faster"  ✏️</div>
+          <div style="color:#eee;margin-bottom:6px">CTA: "Try free →"  ✏️</div>
+          <div style="color:#666;margin-bottom:6px">APPEARANCE</div>
+          <div style="color:#eee;margin-bottom:3px">● Dark  ○ Light  ○ Tonal</div>
+          <div style="margin-top:6px;color:#4ade80;background:#0f2a15;padding:3px;text-align:center">↓ Export PNG</div>
+        </div>
+        <div style="flex:0 0 80px;border:2px solid #4ade80;background:#0a0a0b;padding:8px;aspect-ratio:1;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="font-size:12px;font-weight:600;color:#fff">10%<br>Faster</div>
+          <div style="font-size:8px;color:#4ade80">Try free →</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+        <span style="background:#1a2a1a;color:#4ade80;padding:3px 8px;border-radius:3px;font-size:11px">Most control</span>
+        <span style="background:#2a1a1a;color:#f87171;padding:3px 8px;border-radius:3px;font-size:11px">More steps</span>
+        <span style="background:#2a1a2a;color:#c4b5fd;padding:3px 8px;border-radius:3px;font-size:11px">Closest to current app</span>
+      </div>
+    </div>
+  </div>
+</div>
