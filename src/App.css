@@ -1,4 +1,4 @@
-.app { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+.app { display: flex; flex-direction: column; height: 100vh; overflow: hidden; background: var(--color-bg); }
 
 /* Top bar */
 .topbar {
@@ -13,18 +13,7 @@
 }
 .topbar-logo { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--color-accent); letter-spacing: 0.04em; }
 .topbar-sep { color: var(--color-border-subtle); }
-.topbar-title { font-size: 12px; color: var(--color-fg-dim); flex: 1; }
-.ui-theme-toggle {
-  margin-left: auto;
-  width: 28px; height: 28px;
-  background: var(--color-bg-raised);
-  border: 1px solid var(--color-border-subtle);
-  color: var(--color-fg-dim);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: color 0.1s, border-color 0.1s;
-}
-.ui-theme-toggle:hover { color: var(--color-fg); border-color: var(--color-fg-dim); }
+.topbar-title { font-size: 12px; color: var(--color-fg-dim); }
 
 /* Platform tabs */
 .platform-tabs {
@@ -63,6 +52,7 @@
 .left-panel {
   width: 300px;
   flex-shrink: 0;
+  background: var(--color-bg-surface);
   border-right: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;

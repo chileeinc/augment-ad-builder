@@ -12,6 +12,19 @@
   justify-content: space-between;
   width: 100%; max-width: 420px;
 }
+.right-panel-controls-right {
+  display: flex; align-items: center; gap: 8px;
+}
+.ui-theme-toggle {
+  width: 26px; height: 26px;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-fg-dim);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: color 0.1s, border-color 0.1s;
+}
+.ui-theme-toggle:hover { color: var(--color-fg); border-color: var(--color-fg-dim); }
 .preview-label {
   font-family: var(--font-mono);
   font-size: 10px; color: var(--color-fg-dimmer);
