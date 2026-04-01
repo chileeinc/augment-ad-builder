@@ -38,7 +38,7 @@
 .theme-tonal {
   --ad-bg: #002400;
   --ad-fg: #99F7A9;
-  --ad-fg-muted: rgba(153, 247, 169, 0.6);
+  --ad-fg-muted: #99F7A9;
   --ad-fg-dim: #1a3a1a;
   --ad-accent: #99F7A9;
   --ad-cta-text: #002400;

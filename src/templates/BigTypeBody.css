@@ -5,7 +5,7 @@
   gap: min(5cqw, 5cqh);
 }
 .btb-logo {
-  width: min(18cqw, 18cqh); color: var(--ad-fg);
+  width: min(22cqw, 22cqh); color: var(--ad-fg);
   flex-shrink: 0;
 }
 .btb-main {
@@ -29,8 +29,7 @@
   margin-top: min(5cqw, 5cqh);
 }
 .btb-footer {
-  padding-top: min(4cqw, 4cqh);
-  border-top: 1px solid var(--ad-border);
+  padding-top: min(2cqw, 2cqh);
   flex-shrink: 0;
 }
 .btb-cta {

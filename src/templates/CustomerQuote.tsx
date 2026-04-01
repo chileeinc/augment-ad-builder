@@ -9,19 +9,19 @@ export default function CustomerQuote({ config }: Props) {
   return (
     <div className="tpl-cq">
       {showLogo && <div className="cq-logo"><AugmentLogo /></div>}
-      {copy.customerName && (
-        <div className="cq-customer-tag">{copy.customerName}</div>
-      )}
       <div className="cq-content">
         {copy.quote && (
           <div className="cq-quote">
             <span className="cq-quote-mark">"</span>{copy.quote}
           </div>
         )}
-        {copy.customerTitle && (
-          <div className="cq-attribution">{copy.customerTitle}</div>
-        )}
       </div>
+      {(copy.customerName || copy.customerTitle) && (
+        <div className="cq-attribution">
+          {copy.customerName && <span className="cq-name-tag">{copy.customerName}</span>}
+          {copy.customerTitle && <div className="cq-title">{copy.customerTitle}</div>}
+        </div>
+      )}
       {copy.cta && (
         <div className="cq-footer">
           <button className="cq-cta">{copy.cta}</button>
