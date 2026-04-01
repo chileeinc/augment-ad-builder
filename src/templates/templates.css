@@ -32,12 +32,13 @@
 }
 
 /* ─── Theme: Tonal ─── */
+/* bg: augment-700 (#002400), fg: augment-200 (#99F7A9) — see augment-design-spec.md §2 */
 .theme-tonal {
   --ad-bg: #002400;
-  --ad-fg: #e8e8ec;
+  --ad-fg: #99F7A9;
   --ad-fg-muted: #5CCC76;
-  --ad-fg-dim: #2a5a2a;
-  --ad-accent: #5CCC76;
+  --ad-fg-dim: #1a3a1a;
+  --ad-accent: #99F7A9;
   --ad-border: #1a3a1a;
   --ad-border-subtle: #0d2a0d;
   background-color: var(--ad-bg);
@@ -47,33 +48,33 @@
 /* ─── Background: Dot Grid ─── */
 .bg-dot-grid.theme-dark {
   background-image: radial-gradient(circle, #2a2a35 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-size: 7px 7px;
 }
 .bg-dot-grid.theme-light {
-  background-image: radial-gradient(circle, #c8c8d2 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(circle, #f0f0f4 1px, transparent 1px);
+  background-size: 7px 7px;
 }
 .bg-dot-grid.theme-tonal {
   background-image: radial-gradient(circle, #0d2e0d 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-size: 7px 7px;
 }
 
-/* ─── Background: Fine Grid ─── */
-.bg-fine-grid.theme-dark {
+/* ─── Background: Grid ─── */
+.bg-grid.theme-dark {
   background-image:
     linear-gradient(to right, #1e1e26 1px, transparent 1px),
     linear-gradient(to bottom, #1e1e26 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-size: 8px 8px;
 }
-.bg-fine-grid.theme-light {
+.bg-grid.theme-light {
   background-image:
-    linear-gradient(to right, #e0e0e8 1px, transparent 1px),
-    linear-gradient(to bottom, #e0e0e8 1px, transparent 1px);
-  background-size: 28px 28px;
+    linear-gradient(to right, #f2f2f5 1px, transparent 1px),
+    linear-gradient(to bottom, #f2f2f5 1px, transparent 1px);
+  background-size: 8px 8px;
 }
-.bg-fine-grid.theme-tonal {
+.bg-grid.theme-tonal {
   background-image:
     linear-gradient(to right, #0a2a0a 1px, transparent 1px),
     linear-gradient(to bottom, #0a2a0a 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-size: 8px 8px;
 }

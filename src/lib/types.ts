@@ -2,7 +2,7 @@ export type Platform = 'instagram' | 'linkedin' | 'twitter'
 export type Purpose = 'product-feature' | 'announcement' | 'case-study' | 'customer-proof' | 'event'
 export type TemplateId = 'big-type-body' | 'logo-type-product-shot' | 'stat-hero' | 'customer-quote'
 export type Theme = 'dark' | 'light' | 'tonal'
-export type Background = 'none' | 'dot-grid' | 'fine-grid'
+export type Background = 'none' | 'dot-grid' | 'grid'
 
 export interface AdSize {
   key: string
