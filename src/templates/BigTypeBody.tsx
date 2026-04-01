@@ -8,15 +8,17 @@ export default function BigTypeBody({ config }: Props) {
   const { copy, showLogo } = config
   return (
     <div className="tpl-btb">
+      {showLogo && <div className="btb-logo"><AugmentLogo /></div>}
       <div className="btb-main">
         {copy.companyName && <div className="btb-company">{copy.companyName}</div>}
         {copy.headline && <div className="btb-headline">{copy.headline}</div>}
         {copy.body && <div className="btb-body">{copy.body}</div>}
       </div>
-      <div className="btb-footer">
-        {copy.cta && <div className="btb-proof">{copy.cta}</div>}
-        {showLogo && <div className="btb-logo"><AugmentLogo /></div>}
-      </div>
+      {copy.cta && (
+        <div className="btb-footer">
+          <button className="btb-cta">{copy.cta}</button>
+        </div>
+      )}
     </div>
   )
 }
