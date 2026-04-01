@@ -30,6 +30,23 @@
   --color-bg-canvas: #0d0d10;
 }
 
+.ui-light {
+  --color-bg: #f2f2f5;
+  --color-bg-surface: #ffffff;
+  --color-bg-raised: #e8e8ed;
+  --color-bg-hover: #dddde4;
+  --color-border: #d0d0d8;
+  --color-border-subtle: #dcdce4;
+  --color-fg: #111113;
+  --color-fg-muted: #555;
+  --color-fg-dim: #888;
+  --color-fg-dimmer: #bbbbc8;
+  --color-accent: #1AA049;
+  --color-accent-light: #5CCC76;
+  --color-accent-dim: #d8f5e3;
+  --color-bg-canvas: #e4e4ea;
+}
+
 html, body, #root {
   height: 100%;
   background: var(--color-bg);

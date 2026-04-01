@@ -90,21 +90,17 @@
 .cta-wand-btn {
   flex-shrink: 0;
   width: 36px;
-  background: var(--color-bg-raised);
-  border: 1px solid var(--color-border-subtle);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent);
   border-left: none;
-  color: var(--color-fg-dim);
+  color: var(--color-accent);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.1s, background 0.1s, border-color 0.1s;
+  transition: opacity 0.1s;
 }
-.cta-wand-btn:hover {
-  color: var(--color-accent);
-  background: var(--color-accent-dim);
-  border-color: var(--color-accent);
-}
+.cta-wand-btn:hover { opacity: 0.75; }
 .cta-input-row input:focus { border-color: var(--color-accent); }
 .cta-input-row input:focus + .cta-wand-btn { border-color: var(--color-accent); }
 .copy-field textarea { height: 60px; }
@@ -224,9 +220,8 @@
 .upload-tile:hover { border-color: var(--color-accent); color: var(--color-accent); }
 /* Reset */
 .reset-row {
-  padding: 12px 0 4px;
+  padding: 12px 14px 4px;
   border-top: 1px solid var(--color-border-subtle);
-  margin-top: 4px;
 }
 .reset-btn {
   font-family: var(--font-mono);
