@@ -1,4 +1,4 @@
-import type { Theme, Background, CtaStyle, LogoPosition, TemplateId } from '../lib/types'
+import type { Theme, Background, LogoPosition, TemplateId } from '../lib/types'
 
 const THEMES: { id: Theme; label: string }[] = [
   { id: 'dark', label: 'Dark' },
@@ -9,11 +9,6 @@ const BACKGROUNDS: { id: Background; label: string }[] = [
   { id: 'none', label: 'None' },
   { id: 'dot-grid', label: 'Dots' },
   { id: 'grid', label: 'Grid' },
-]
-const CTA_STYLES: { id: CtaStyle; label: string }[] = [
-  { id: 'filled', label: 'Filled' },
-  { id: 'outline', label: 'Outline' },
-  { id: 'text-link', label: 'Text' },
 ]
 const LOGO_POSITIONS: { id: LogoPosition; label: string }[] = [
   { id: 'top-left', label: '↖' },
@@ -27,18 +22,16 @@ interface Props {
   theme: Theme
   background: Background
   showLogo: boolean
-  ctaStyle: CtaStyle
   logoPosition: LogoPosition
   onThemeChange: (t: Theme) => void
   onBackgroundChange: (b: Background) => void
   onLogoChange: (v: boolean) => void
-  onCtaStyleChange: (s: CtaStyle) => void
   onLogoPositionChange: (p: LogoPosition) => void
 }
 
 export default function AppearancePanel({
-  template, theme, background, showLogo, ctaStyle, logoPosition,
-  onThemeChange, onBackgroundChange, onLogoChange, onCtaStyleChange, onLogoPositionChange
+  template, theme, background, showLogo, logoPosition,
+  onThemeChange, onBackgroundChange, onLogoChange, onLogoPositionChange
 }: Props) {
   return (
     <div className="panel-section">
@@ -62,19 +55,6 @@ export default function AppearancePanel({
             onClick={() => onBackgroundChange(b.id)}
           >
             {b.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="appearance-row-label">CTA Style</div>
-      <div className="cta-style-swatches">
-        {CTA_STYLES.map(s => (
-          <button
-            key={s.id}
-            className={`cta-style-swatch${ctaStyle === s.id ? ' active' : ''}`}
-            onClick={() => onCtaStyleChange(s.id)}
-          >
-            {s.label}
           </button>
         ))}
       </div>

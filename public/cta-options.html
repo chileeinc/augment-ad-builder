@@ -3,696 +3,438 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CTA Button Options — Ad Builder</title>
+<title>CTA Explorations — Ad Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --green-400: #1AA049;
-    --green-200: #99F7A9;
-    --green-700: #002400;
-    --dark-bg: #0a0a0b;
-    --dark-fg: #f5f5f7;
-    --light-bg: #ffffff;
-    --light-fg: #111111;
-    --font-sans: 'Inter', system-ui, sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
+    --g400: #1AA049; --g200: #99F7A9; --g700: #002400;
+    --dbg: #0a0a0b; --dfg: #f5f5f7;
+    --lbg: #ffffff; --lfg: #111111;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
   }
+  body { background: #0f0f10; color: #e8e8ec; font-family: var(--sans); padding: 40px 32px 80px; }
 
-  body {
-    background: #0f0f10;
-    color: #e8e8ec;
-    font-family: var(--font-sans);
-    padding: 40px 32px 80px;
-    min-height: 100vh;
-  }
+  .page-header { margin-bottom: 48px; }
+  .page-eyebrow { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--g400); margin-bottom: 10px; }
+  .page-title { font-size: 26px; font-weight: 300; letter-spacing: -0.02em; color: #f5f5f7; margin-bottom: 6px; }
+  .page-sub { font-size: 12px; color: #444; }
 
-  .page-header {
-    margin-bottom: 56px;
-  }
-  .page-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--green-400);
-    margin-bottom: 10px;
-  }
-  .page-title {
-    font-size: 28px;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    color: #f5f5f7;
-    margin-bottom: 8px;
-  }
-  .page-sub {
-    font-size: 13px;
-    color: #666;
-    font-weight: 400;
-  }
+  .section-rule { height: 1px; background: #1a1a22; margin: 48px 0 36px; }
+  .section-label { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: #2a2a3a; margin-bottom: 36px; }
 
-  /* Option sections */
-  .option {
-    margin-bottom: 64px;
-  }
-  .option-header {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #1e1e26;
-  }
-  .option-name {
-    font-size: 15px;
-    font-weight: 500;
-    color: #f5f5f7;
-    letter-spacing: -0.01em;
-  }
-  .option-tag {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #444;
-    padding: 2px 7px;
-    border: 1px solid #2a2a35;
-  }
-  .option-tag.current {
-    color: var(--green-400);
-    border-color: #1a3520;
-    background: #0a1a0e;
-  }
-  .option-desc {
-    font-size: 12px;
-    color: #555;
-    margin-top: 4px;
-  }
+  .option { margin-bottom: 48px; }
+  .option-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #1a1a22; }
+  .option-name { font-size: 14px; font-weight: 500; color: #f5f5f7; letter-spacing: -0.01em; }
+  .badge { font-family: var(--mono); font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; padding: 2px 6px; border: 1px solid; }
+  .badge.keep { color: var(--g400); border-color: #1a3520; background: #0a1a0e; }
+  .badge.new { color: #555; border-color: #2a2a35; }
+  .badge.wild { color: #ff6b35; border-color: #3a1a0a; background: #1a0a05; }
+  .option-desc { font-size: 11px; color: #444; }
 
-  /* Theme row */
-  .theme-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .theme-card {
-    padding: 32px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    position: relative;
-  }
-  .theme-card.dark  { background: var(--dark-bg); border: 1px solid #1e1e26; }
-  .theme-card.light { background: var(--light-bg); border: 1px solid #e0e0e4; }
-  .theme-card.tonal { background: var(--green-700); border: 1px solid #0d2a0d; }
+  .theme-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .tc { padding: 24px 20px; display: flex; flex-direction: column; gap: 14px; position: relative; }
+  .tc.dark  { background: var(--dbg); border: 1px solid #1e1e26; }
+  .tc.light { background: var(--lbg); border: 1px solid #e0e0e4; }
+  .tc.tonal { background: var(--g700); border: 1px solid #0d2a0d; }
+  .tlabel { font-family: var(--mono); font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; position: absolute; top: 8px; right: 10px; }
+  .dark  .tlabel { color: #222; } .light .tlabel { color: #ddd; } .tonal .tlabel { color: #1a4a1a; }
 
-  .theme-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    position: absolute;
-    top: 10px;
-    right: 12px;
-  }
-  .dark  .theme-label { color: #333; }
-  .light .theme-label { color: #ccc; }
-  .tonal .theme-label { color: #1a4a1a; }
+  .snip { display: flex; flex-direction: column; gap: 6px; }
+  .h { font-size: 18px; font-weight: 300; letter-spacing: -0.025em; line-height: 1.15; }
+  .dark  .h { color: var(--dfg); } .light .h { color: var(--lfg); } .tonal .h { color: var(--g200); }
+  .b { font-size: 10px; line-height: 1.5; }
+  .dark  .b { color: #555; } .light .b { color: #999; } .tonal .b { color: #2a5a2a; }
+  .ca { margin-top: 2px; }
 
-  /* Preview ad snippet */
-  .ad-snippet {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .ad-headline {
-    font-size: 22px;
-    font-weight: 300;
-    letter-spacing: -0.025em;
-    line-height: 1.15;
-  }
-  .dark  .ad-headline { color: var(--dark-fg); }
-  .light .ad-headline { color: var(--light-fg); }
-  .tonal .ad-headline { color: var(--green-200); }
+  /* ── KEEPS ── */
+  /* A Filled */
+  .cta-a { display:inline-block; font-family:var(--mono); font-size:9px; font-weight:500; text-transform:uppercase; letter-spacing:0.1em; padding:8px 18px; border:none; border-radius:2px; cursor:pointer; background:var(--g400); color:#0a0a0b; }
+  .tonal .cta-a { background:var(--g200); color:var(--g700); }
 
-  .ad-body {
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 1.5;
-  }
-  .dark  .ad-body { color: #888; }
-  .light .ad-body { color: #777; }
-  .tonal .ad-body { color: #4a7a4a; }
+  /* D Outline */
+  .cta-d { display:inline-block; font-family:var(--mono); font-size:9px; font-weight:500; text-transform:uppercase; letter-spacing:0.1em; padding:7px 16px; border-radius:0; cursor:pointer; background:transparent; }
+  .dark  .cta-d { color:var(--g400); border:1px solid var(--g400); }
+  .light .cta-d { color:var(--g400); border:1px solid var(--g400); }
+  .tonal .cta-d { color:var(--g200); border:1px solid var(--g200); }
 
-  .cta-area {
-    margin-top: 8px;
-  }
+  /* G Filled+Arrow */
+  .cta-g { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:9px; font-weight:500; text-transform:uppercase; letter-spacing:0.1em; padding:8px 14px 8px 18px; border:none; border-radius:2px; cursor:pointer; background:var(--g400); color:#0a0a0b; }
+  .tonal .cta-g { background:var(--g200); color:var(--g700); }
 
-  /* ─── OPTION A: Filled (current) ─── */
-  .cta-a {
+  /* H Outline+Arrow */
+  .cta-h { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:9px; font-weight:500; text-transform:uppercase; letter-spacing:0.1em; padding:7px 12px 7px 16px; border-radius:2px; cursor:pointer; background:transparent; }
+  .dark  .cta-h { color:var(--g400); border:1px solid var(--g400); }
+  .light .cta-h { color:var(--g400); border:1px solid var(--g400); }
+  .tonal .cta-h { color:var(--g200); border:1px solid var(--g200); }
+
+  /* I Mono Filled Wide */
+  .cta-i { display:inline-block; font-family:var(--mono); font-size:9px; font-weight:500; text-transform:uppercase; letter-spacing:0.14em; padding:9px 22px; border:none; border-radius:0; cursor:pointer; background:var(--g400); color:#0a0a0b; }
+  .tonal .cta-i { background:var(--g200); color:var(--g700); }
+
+  /* J Terminal */
+  .cta-j { display:inline-flex; align-items:center; font-family:var(--mono); font-size:11px; font-weight:400; text-transform:uppercase; letter-spacing:0.08em; background:transparent; border:none; cursor:pointer; padding:0; }
+  .cta-j .pr { margin-right:8px; }
+  .dark  .cta-j { color:var(--dfg); } .dark  .cta-j .pr { color:var(--g400); }
+  .light .cta-j { color:var(--lfg); } .light .cta-j .pr { color:var(--g400); }
+  .tonal .cta-j { color:var(--g200); } .tonal .cta-j .pr { opacity:0.5; }
+
+  /* K Bracket */
+  .cta-k { display:inline-flex; align-items:center; font-family:var(--mono); font-size:10px; font-weight:400; text-transform:uppercase; letter-spacing:0.1em; background:transparent; border:none; cursor:pointer; padding:0; }
+  .cta-k .br { font-size:13px; font-weight:300; }
+  .dark  .cta-k { color:var(--dfg); } .dark  .cta-k .br { color:var(--g400); }
+  .light .cta-k { color:var(--lfg); } .light .cta-k .br { color:var(--g400); }
+  .tonal .cta-k { color:var(--g200); } .tonal .cta-k .br { opacity:0.6; }
+
+  /* ── WILD 10 ── */
+
+  /* Q — Marquee scrolling text */
+  .cta-q-wrap {
+    overflow: hidden; width: 100%;
+    padding: 6px 0;
+    cursor: pointer;
+  }
+  .cta-q {
+    display: inline-flex; gap: 32px; white-space: nowrap;
+    font-family: var(--mono); font-size: 10px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    animation: marquee 6s linear infinite;
+  }
+  .dark  .cta-q { color: var(--g400); }
+  .light .cta-q { color: var(--g400); }
+  .tonal .cta-q { color: var(--g200); }
+  .cta-q .sep { opacity: 0.3; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* R — Barcode */
+  .cta-r {
+    display: inline-flex; align-items: center; gap: 14px;
+    cursor: pointer; background: transparent; border: none; padding: 0;
+  }
+  .cta-r .barcode {
+    display: flex; align-items: stretch; gap: 2px; height: 32px;
+  }
+  .cta-r .bar {
+    width: 2px; border-radius: 0; flex-shrink: 0;
+  }
+  .dark  .cta-r .bar { background: var(--g400); }
+  .light .cta-r .bar { background: var(--g400); }
+  .tonal .cta-r .bar { background: var(--g200); }
+  /* Vary bar widths for barcode feel */
+  .cta-r .bar:nth-child(2n)   { width: 3px; }
+  .cta-r .bar:nth-child(3n)   { width: 1px; }
+  .cta-r .bar:nth-child(5n)   { width: 4px; }
+  .cta-r .bar:nth-child(7n)   { width: 1px; }
+  .cta-r .bar:nth-child(11n)  { width: 3px; }
+  .cta-r-label { font-family: var(--mono); font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; }
+  .dark  .cta-r-label { color: var(--dfg); }
+  .light .cta-r-label { color: var(--lfg); }
+  .tonal .cta-r-label { color: var(--g200); }
+
+  /* S — Git diff */
+  .cta-s { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; background:transparent; border:none; cursor:pointer; padding:0; }
+  .cta-s .plus { font-size:14px; font-weight:600; }
+  .dark  .cta-s { color:var(--dfg); } .dark  .cta-s .plus { color:var(--g400); }
+  .light .cta-s { color:var(--lfg); } .light .cta-s .plus { color:var(--g400); }
+  .tonal .cta-s { color:var(--g200); } .tonal .cta-s .plus { opacity:0.6; }
+
+  /* T — Blinking cursor */
+  .cta-t { display:inline-flex; align-items:center; gap:0; font-family:var(--mono); font-size:11px; font-weight:400; text-transform:uppercase; letter-spacing:0.08em; background:transparent; border:none; cursor:pointer; padding:0; }
+  .cta-t .cursor { display:inline-block; width:8px; height:14px; margin-left:3px; animation: blink 1s step-end infinite; }
+  .dark  .cta-t { color:var(--dfg); } .dark  .cta-t .cursor { background:var(--g400); }
+  .light .cta-t { color:var(--lfg); } .light .cta-t .cursor { background:var(--g400); }
+  .tonal .cta-t { color:var(--g200); } .tonal .cta-t .cursor { background:var(--g200); opacity:0.6; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* U — Full-width stamp */
+  .cta-u {
+    display: block; width: 100%;
+    font-family: var(--mono); font-size: 9px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.2em;
+    text-align: center; padding: 10px 0;
+    cursor: pointer; border: none; border-radius: 0;
+  }
+  .dark  .cta-u { background: var(--g400); color: #0a0a0b; }
+  .light .cta-u { background: var(--g400); color: #fff; }
+  .tonal .cta-u { background: var(--g200); color: var(--g700); }
+
+  /* V — Double border */
+  .cta-v {
     display: inline-block;
-    background: var(--green-400);
-    color: #0a0a0b;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 2px;
-    letter-spacing: 0.01em;
-    cursor: pointer;
+    font-family: var(--mono); font-size: 9px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    padding: 8px 18px; cursor: pointer; background: transparent; border: none;
+    outline-offset: -4px;
   }
-  .tonal .cta-a {
-    background: var(--green-200);
-    color: var(--green-700);
+  .dark  .cta-v { color:var(--g400); box-shadow: 0 0 0 1px var(--g400), 0 0 0 3px var(--g400) inset; }
+  .light .cta-v { color:var(--g400); box-shadow: 0 0 0 1px var(--g400), 0 0 0 3px var(--g400) inset; }
+  .tonal .cta-v { color:var(--g200); box-shadow: 0 0 0 1px var(--g200), 0 0 0 3px var(--g200) inset; }
+
+  /* W — Corner brackets only */
+  .cta-w {
+    display: inline-block; position: relative;
+    font-family: var(--mono); font-size: 9px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    padding: 10px 16px; cursor: pointer; background: transparent; border: none;
+  }
+  .cta-w::before, .cta-w::after,
+  .cta-w span::before, .cta-w span::after {
+    content:''; position:absolute; width:8px; height:8px;
+  }
+  .dark  .cta-w::before, .dark  .cta-w::after,
+  .dark  .cta-w span::before, .dark  .cta-w span::after { border-color:var(--g400); }
+  .light .cta-w::before, .light .cta-w::after,
+  .light .cta-w span::before, .light .cta-w span::after { border-color:var(--g400); }
+  .tonal .cta-w::before, .tonal .cta-w::after,
+  .tonal .cta-w span::before, .tonal .cta-w span::after { border-color:var(--g200); }
+  .cta-w::before   { top:0; left:0; border-top:1px solid; border-left:1px solid; }
+  .cta-w::after    { top:0; right:0; border-top:1px solid; border-right:1px solid; }
+  .cta-w span::before { bottom:0; left:0; border-bottom:1px solid; border-left:1px solid; }
+  .cta-w span::after  { bottom:0; right:0; border-bottom:1px solid; border-right:1px solid; }
+  .dark  .cta-w { color:var(--dfg); } .light .cta-w { color:var(--lfg); } .tonal .cta-w { color:var(--g200); }
+
+  /* X — Code comment */
+  .cta-x { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; font-weight:400; text-transform:uppercase; letter-spacing:0.06em; background:transparent; border:none; cursor:pointer; padding:0; }
+  .cta-x .cc { font-weight:400; opacity:0.4; }
+  .dark  .cta-x { color:var(--dfg); }
+  .light .cta-x { color:var(--lfg); }
+  .tonal .cta-x { color:var(--g200); }
+
+  /* Y — Stacked label pair */
+  .cta-y { display:inline-flex; flex-direction:column; gap:0; background:transparent; border:none; cursor:pointer; padding:0; text-align:left; }
+  .cta-y .top { font-family:var(--mono); font-size:7px; font-weight:400; text-transform:uppercase; letter-spacing:0.14em; }
+  .cta-y .bot { font-family:var(--mono); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+  .dark  .cta-y .top { color:#444; } .dark  .cta-y .bot { color:var(--dfg); }
+  .light .cta-y .top { color:#bbb; } .light .cta-y .bot { color:var(--lfg); }
+  .tonal .cta-y .top { color:#2a5a2a; } .tonal .cta-y .bot { color:var(--g200); }
+
+  /* Z — Scanline fill */
+  .cta-z {
+    display:inline-block; position:relative; overflow:hidden;
+    font-family:var(--mono); font-size:9px; font-weight:500;
+    text-transform:uppercase; letter-spacing:0.12em;
+    padding:9px 20px; cursor:pointer; border:none; border-radius:0;
+  }
+  .dark  .cta-z { background:var(--g400); color:#0a0a0b; }
+  .light .cta-z { background:var(--g400); color:#fff; }
+  .tonal .cta-z { background:var(--g200); color:var(--g700); }
+  .cta-z::after {
+    content:'';
+    position:absolute; inset:0;
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px);
+    pointer-events:none;
   }
 
-  /* ─── OPTION B: Outline ─── */
-  .cta-b {
-    display: inline-block;
-    background: transparent;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 7px 20px;
-    border-radius: 2px;
-    letter-spacing: 0.01em;
-    cursor: pointer;
+  /* AA — Overprint blocks */
+  .cta-aa {
+    display:inline-flex; gap:2px; cursor:pointer;
+    background:transparent; border:none; padding:0;
   }
-  .dark  .cta-b { color: var(--green-400); border: 1.5px solid var(--green-400); }
-  .light .cta-b { color: var(--green-400); border: 1.5px solid var(--green-400); }
-  .tonal .cta-b { color: var(--green-200); border: 1.5px solid var(--green-200); }
+  .cta-aa .block {
+    font-family:var(--mono); font-size:9px; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.06em;
+    padding:8px 6px; display:flex; align-items:center;
+  }
+  .dark  .cta-aa .block:nth-child(odd)  { background:var(--g400); color:#0a0a0b; }
+  .dark  .cta-aa .block:nth-child(even) { background:transparent; color:var(--g400); border:1px solid var(--g400); }
+  .light .cta-aa .block:nth-child(odd)  { background:var(--g400); color:#fff; }
+  .light .cta-aa .block:nth-child(even) { background:transparent; color:var(--g400); border:1px solid var(--g400); }
+  .tonal .cta-aa .block:nth-child(odd)  { background:var(--g200); color:var(--g700); }
+  .tonal .cta-aa .block:nth-child(even) { background:transparent; color:var(--g200); border:1px solid var(--g200); }
 
-  /* ─── OPTION C: Text link ─── */
-  .cta-c {
-    display: inline-block;
-    background: transparent;
-    border: none;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    padding: 0;
-    cursor: pointer;
-  }
-  .dark  .cta-c { color: var(--green-400); }
-  .light .cta-c { color: var(--green-400); }
-  .tonal .cta-c { color: var(--green-200); }
-  .cta-c .arrow { margin-left: 6px; display: inline-block; transition: transform 0.15s; }
+  /* AB — Countdown/status */
+  .cta-ab { display:inline-flex; align-items:center; gap:10px; background:transparent; border:none; cursor:pointer; padding:0; }
+  .cta-ab .dot { width:6px; height:6px; border-radius:50%; animation: pulse 2s ease-in-out infinite; }
+  .dark  .cta-ab .dot { background:var(--g400); }
+  .light .cta-ab .dot { background:var(--g400); }
+  .tonal .cta-ab .dot { background:var(--g200); }
+  .cta-ab .text { font-family:var(--mono); font-size:9px; font-weight:500; text-transform:uppercase; letter-spacing:0.12em; }
+  .dark  .cta-ab .text { color:var(--dfg); } .light .cta-ab .text { color:var(--lfg); } .tonal .cta-ab .text { color:var(--g200); }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:0.4; transform:scale(0.8)} }
 
-  /* ─── OPTION D: Mono uppercase pill ─── */
-  .cta-d {
-    display: inline-block;
-    background: transparent;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    padding: 7px 16px;
-    border-radius: 0;
-    cursor: pointer;
-  }
-  .dark  .cta-d { color: var(--green-400); border: 1px solid var(--green-400); }
-  .light .cta-d { color: var(--green-400); border: 1px solid var(--green-400); }
-  .tonal .cta-d { color: var(--green-200); border: 1px solid var(--green-200); }
-
-  /* ─── OPTION E: Filled inverse (white/fg) ─── */
-  .cta-e {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 8px 20px;
-    border-radius: 2px;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-    border: none;
-  }
-  .dark  .cta-e { background: var(--dark-fg); color: var(--dark-bg); }
-  .light .cta-e { background: var(--light-fg); color: var(--light-bg); }
-  .tonal .cta-e { background: var(--green-200); color: var(--green-700); }
-
-  /* ─── OPTION F: Underline text ─── */
-  .cta-f {
-    display: inline-block;
-    background: transparent;
-    border: none;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 400;
-    padding: 0 0 2px;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .dark  .cta-f { color: var(--dark-fg); border-bottom: 1px solid #444; }
-  .light .cta-f { color: var(--light-fg); border-bottom: 1px solid #ccc; }
-  .tonal .cta-f { color: var(--green-200); border-bottom: 1px solid #2a5a2a; }
-
-  /* ─── OPTION G: Filled + arrow ─── */
-  .cta-g {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--green-400);
-    color: #0a0a0b;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 8px 16px 8px 20px;
-    border: none;
-    border-radius: 2px;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-  }
-  .tonal .cta-g { background: var(--green-200); color: var(--green-700); }
-  .cta-g .arrow { font-size: 14px; line-height: 1; }
-
-  /* ─── OPTION H: Outline + arrow ─── */
-  .cta-h {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 7px 14px 7px 18px;
-    border-radius: 2px;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-  }
-  .dark  .cta-h { color: var(--green-400); border: 1.5px solid var(--green-400); }
-  .light .cta-h { color: var(--green-400); border: 1.5px solid var(--green-400); }
-  .tonal .cta-h { color: var(--green-200); border: 1.5px solid var(--green-200); }
-  .cta-h .arrow { font-size: 14px; }
-
-  /* ─── OPTION I: Mono filled ─── */
-  .cta-i {
-    display: inline-block;
-    background: var(--green-400);
-    color: #0a0a0b;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 9px 20px;
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-  }
-  .tonal .cta-i { background: var(--green-200); color: var(--green-700); }
-
-  /* ─── OPTION J: Ghost narrow ─── */
-  .cta-j {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: transparent;
-    font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0;
-    border: none;
-    cursor: pointer;
-  }
-  .dark  .cta-j { color: #555; }
-  .light .cta-j { color: #aaa; }
-  .tonal .cta-j { color: #3a6a3a; }
-  .cta-j .arrow { font-size: 12px; }
-
-  /* divider */
-  .divider {
-    height: 1px;
-    background: #1a1a22;
-    margin: 48px 0;
-  }
-
-  /* note */
-  .note {
-    font-size: 11px;
-    color: #3a3a4a;
-    font-family: var(--font-mono);
-    margin-top: 8px;
-  }
-
-  /* bottom legend */
-  .legend {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    margin-top: 56px;
-    padding-top: 24px;
-    border-top: 1px solid #1e1e26;
-  }
-  .legend-item {
-    font-size: 11px;
-    color: #444;
-    font-family: var(--font-mono);
-  }
-  .legend-item strong { color: #666; font-weight: 500; }
+  .legend { display:flex; gap:16px; flex-wrap:wrap; margin-top:48px; padding-top:20px; border-top:1px solid #1e1e26; }
+  .li { font-size:10px; color:#333; font-family:var(--mono); }
+  .li strong { color:#555; }
 </style>
 </head>
 <body>
 
 <div class="page-header">
-  <div class="page-eyebrow">Ad Builder — Design Review</div>
-  <h1 class="page-title">CTA Button Options</h1>
-  <p class="page-sub">Each option shown across Dark / Light / Tonal themes. Select 1–2 to add alongside existing styles.</p>
+  <div class="page-eyebrow">Ad Builder — Round 2</div>
+  <h1 class="page-title">CTA Explorations</h1>
+  <p class="page-sub">A D G H I J K kept · 10 new wild ones below</p>
 </div>
 
-<!-- OPTION A -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">A — Filled</span>
-    <span class="option-tag current">Current</span>
-    <span class="option-desc">Solid green fill. High contrast, clear primary action.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-a">Try free</button></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-a">Try free</button></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-a">Try free</button></div>
-    </div>
-  </div>
-</div>
+<!-- A -->
+<div class="option"><div class="option-header"><span class="option-name">A — Filled</span><span class="badge keep">Keep</span><span class="option-desc">Solid green, primary action.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo so suggestions are always in context.</div></div><div class="ca"><button class="cta-a">Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo so suggestions are always in context.</div></div><div class="ca"><button class="cta-a">Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo so suggestions are always in context.</div></div><div class="ca"><button class="cta-a">Try Free</button></div></div>
+</div></div>
 
-<!-- OPTION B -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">B — Outline</span>
-    <span class="option-tag current">Current</span>
-    <span class="option-desc">Transparent with green border. Lower visual weight, good secondary CTA.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-b">Try free</button></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-b">Try free</button></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-b">Try free</button></div>
-    </div>
-  </div>
-</div>
+<!-- D -->
+<div class="option"><div class="option-header"><span class="option-name">D — Outline</span><span class="badge keep">Keep</span><span class="option-desc">Lighter weight, secondary.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo so suggestions are always in context.</div></div><div class="ca"><button class="cta-d">Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo so suggestions are always in context.</div></div><div class="ca"><button class="cta-d">Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo so suggestions are always in context.</div></div><div class="ca"><button class="cta-d">Try Free</button></div></div>
+</div></div>
 
-<!-- OPTION C -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">C — Text Link</span>
-    <span class="option-tag current">Current</span>
-    <span class="option-desc">No chrome, just text + arrow. Minimal, editorial feel.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-c">Try free <span class="arrow">→</span></button></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-c">Try free <span class="arrow">→</span></button></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-c">Try free <span class="arrow">→</span></button></div>
-    </div>
-  </div>
-</div>
+<!-- G -->
+<div class="option"><div class="option-header"><span class="option-name">G — Filled + Arrow</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-g">Try Free →</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-g">Try Free →</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-g">Try Free →</button></div></div>
+</div></div>
 
-<div class="divider"></div>
-<p class="note" style="margin-bottom: 32px; color: #2a2a3a;">— NEW OPTIONS BELOW —</p>
+<!-- H -->
+<div class="option"><div class="option-header"><span class="option-name">H — Outline + Arrow</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-h">Try Free →</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-h">Try Free →</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-h">Try Free →</button></div></div>
+</div></div>
 
-<!-- OPTION D -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">D — Mono Outline</span>
-    <span class="option-tag">New</span>
-    <span class="option-desc">IBM Plex Mono, uppercase, tight border. Feels more technical/engineered than Inter.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-d">TRY FREE</button></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-d">TRY FREE</button></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-d">TRY FREE</button></div>
-    </div>
-  </div>
-</div>
+<!-- I -->
+<div class="option"><div class="option-header"><span class="option-name">I — Mono Wide</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-i">Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-i">Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-i">Try Free</button></div></div>
+</div></div>
 
-<!-- OPTION E -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">E — Inverted Fill</span>
-    <span class="option-tag">New</span>
-    <span class="option-desc">White/fg filled on dark. High contrast but no green — lets headline breathe.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-e">Try free</button></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-e">Try free</button></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-e">Try free</button></div>
-    </div>
-  </div>
-</div>
+<!-- J -->
+<div class="option"><div class="option-header"><span class="option-name">J — Terminal Prompt</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-j"><span class="pr">&gt;</span> Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-j"><span class="pr">&gt;</span> Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-j"><span class="pr">&gt;</span> Try Free</button></div></div>
+</div></div>
 
-<!-- OPTION F -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">F — Underline Text</span>
-    <span class="option-tag">New</span>
-    <span class="option-desc">No button chrome, just text with a hairline underline. Ultra-minimal, editorial.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><a class="cta-f">Try free</a></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><a class="cta-f">Try free</a></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><a class="cta-f">Try free</a></div>
-    </div>
-  </div>
-</div>
+<!-- K -->
+<div class="option"><div class="option-header"><span class="option-name">K — Bracket Notation</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-k"><span class="br">[</span>&nbsp;Try Free&nbsp;<span class="br">]</span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-k"><span class="br">[</span>&nbsp;Try Free&nbsp;<span class="br">]</span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-k"><span class="br">[</span>&nbsp;Try Free&nbsp;<span class="br">]</span></button></div></div>
+</div></div>
 
-<!-- OPTION G -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">G — Filled + Arrow</span>
-    <span class="option-tag">New</span>
-    <span class="option-desc">Green fill with inline → arrow. More directional, follows spec CTA pattern.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-g">Try free <span class="arrow">→</span></button></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-g">Try free <span class="arrow">→</span></button></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-g">Try free <span class="arrow">→</span></button></div>
-    </div>
-  </div>
-</div>
+<div class="section-rule"></div>
+<p class="section-label">— Wild Round —</p>
 
-<!-- OPTION H -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">H — Outline + Arrow</span>
-    <span class="option-tag">New</span>
-    <span class="option-desc">Outline with → arrow. Softer than filled but still directional.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-h">Try free <span class="arrow">→</span></button></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-h">Try free <span class="arrow">→</span></button></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-h">Try free <span class="arrow">→</span></button></div>
-    </div>
-  </div>
-</div>
+<!-- Q Marquee -->
+<div class="option"><div class="option-header"><span class="option-name">Q — Scrolling Marquee</span><span class="badge wild">Wild</span><span class="option-desc">Continuous scroll. Same energy as the reference image. Eye-catching, zero chrome.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><div class="cta-q-wrap"><div class="cta-q">Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span></div></div></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><div class="cta-q-wrap"><div class="cta-q">Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span></div></div></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><div class="cta-q-wrap"><div class="cta-q">Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span> Try Augment Now <span class="sep">·</span></div></div></div></div>
+</div></div>
 
-<!-- OPTION I -->
-<div class="option">
-  <div class="option-header">
-    <span class="option-name">I — Mono Filled</span>
-    <span class="option-tag">New</span>
-    <span class="option-desc">Green fill + IBM Plex Mono uppercase. Most "Augment-branded" feeling — ties to the mono label system.</span>
-  </div>
-  <div class="theme-row">
-    <div class="theme-card dark">
-      <span class="theme-label">Dark</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-i">TRY FREE</button></div>
-    </div>
-    <div class="theme-card light">
-      <span class="theme-label">Light</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-i">TRY FREE</button></div>
-    </div>
-    <div class="theme-card tonal">
-      <span class="theme-label">Tonal</span>
-      <div class="ad-snippet">
-        <div class="ad-headline">Code faster with AI</div>
-        <div class="ad-body">Augment indexes your entire repo so suggestions are always in context.</div>
-      </div>
-      <div class="cta-area"><button class="cta-i">TRY FREE</button></div>
-    </div>
-  </div>
-</div>
+<!-- R Barcode -->
+<div class="option"><div class="option-header"><span class="option-name">R — Barcode</span><span class="badge wild">Wild</span><span class="option-desc">Vertical bars + label. Straight from the reference. Graphic, product-scan energy.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-r"><div class="barcode"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><span class="cta-r-label">Try Free</span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-r"><div class="barcode"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><span class="cta-r-label">Try Free</span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-r"><div class="barcode"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><span class="cta-r-label">Try Free</span></button></div></div>
+</div></div>
+
+<!-- S Git Diff -->
+<div class="option"><div class="option-header"><span class="option-name">S — Git Diff</span><span class="badge wild">Wild</span><span class="option-desc">+ prefix like a git addition. Devs read this instantly as "add something new".</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-s"><span class="plus">+</span> Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-s"><span class="plus">+</span> Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-s"><span class="plus">+</span> Try Free</button></div></div>
+</div></div>
+
+<!-- T Blinking Cursor -->
+<div class="option"><div class="option-header"><span class="option-name">T — Blinking Cursor</span><span class="badge wild">Wild</span><span class="option-desc">TRY FREE█ — terminal input line. Minimal, alive. Feels like you're being invited to type.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-t">Try Free<span class="cursor"></span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-t">Try Free<span class="cursor"></span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-t">Try Free<span class="cursor"></span></button></div></div>
+</div></div>
+
+<!-- U Full-width stamp -->
+<div class="option"><div class="option-header"><span class="option-name">U — Full-Width Stamp</span><span class="badge wild">Wild</span><span class="option-desc">Stretches the full ad width. Bold bottom-of-ad footer — like a newspaper classified stamp.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-u">Try Augment Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-u">Try Augment Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-u">Try Augment Free</button></div></div>
+</div></div>
+
+<!-- V Double Border -->
+<div class="option"><div class="option-header"><span class="option-name">V — Double Border</span><span class="badge wild">Wild</span><span class="option-desc">Two concentric green borders via box-shadow. Like a wax seal or stamp. Graphic, unusual.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-v">Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-v">Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-v">Try Free</button></div></div>
+</div></div>
+
+<!-- W Corner Brackets -->
+<div class="option"><div class="option-header"><span class="option-name">W — Corner Brackets Only</span><span class="badge wild">Wild</span><span class="option-desc">No full border — just 4 green corners. Crosshair/targeting feel. Very technical.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-w"><span>Try Free</span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-w"><span>Try Free</span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-w"><span>Try Free</span></button></div></div>
+</div></div>
+
+<!-- X Code comment -->
+<div class="option"><div class="option-header"><span class="option-name">X — Code Comment</span><span class="badge wild">Wild</span><span class="option-desc">// TRY FREE — code annotation syntax. Subversive — the CTA looks like it's commented out.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-x"><span class="cc">//</span> Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-x"><span class="cc">//</span> Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-x"><span class="cc">//</span> Try Free</button></div></div>
+</div></div>
+
+<!-- Y Stacked Label -->
+<div class="option"><div class="option-header"><span class="option-name">Y — Stacked Label</span><span class="badge wild">Wild</span><span class="option-desc">Micro label above, big action below. Like a form field. Unexpected hierarchy reversal.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-y"><span class="top">Start now ↓</span><span class="bot">Try Free</span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-y"><span class="top">Start now ↓</span><span class="bot">Try Free</span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-y"><span class="top">Start now ↓</span><span class="bot">Try Free</span></button></div></div>
+</div></div>
+
+<!-- Z Scanline -->
+<div class="option"><div class="option-header"><span class="option-name">Z — Scanline Fill</span><span class="badge wild">Wild</span><span class="option-desc">Green fill with horizontal scanline texture overlay. CRT/retro terminal. Tactile.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-z">Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-z">Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-z">Try Free</button></div></div>
+</div></div>
+
+<!-- AA Overprint -->
+<div class="option"><div class="option-header"><span class="option-name">AA — Overprint Blocks</span><span class="badge wild">Wild</span><span class="option-desc">Alternating filled/outline blocks per character group. Graphic, almost typographic poster vibe.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-aa"><span class="block">TRY</span><span class="block">FREE</span><span class="block">NOW</span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-aa"><span class="block">TRY</span><span class="block">FREE</span><span class="block">NOW</span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-aa"><span class="block">TRY</span><span class="block">FREE</span><span class="block">NOW</span></button></div></div>
+</div></div>
+
+<!-- AB Status dot -->
+<div class="option"><div class="option-header"><span class="option-name">AB — Live Status Dot</span><span class="badge wild">Wild</span><span class="option-desc">Pulsing dot + label. "Live" / "Available now" energy. Subtle movement, zero chrome.</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-ab"><span class="dot"></span><span class="text">Try Free Now</span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-ab"><span class="dot"></span><span class="text">Try Free Now</span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-ab"><span class="dot"></span><span class="text">Try Free Now</span></button></div></div>
+</div></div>
 
 <div class="legend">
-  <span class="legend-item"><strong>A B C</strong> — existing in tool</span>
-  <span class="legend-item"><strong>D</strong> — mono outline (technical)</span>
-  <span class="legend-item"><strong>E</strong> — inverted fill (no green)</span>
-  <span class="legend-item"><strong>F</strong> — underline only (minimal)</span>
-  <span class="legend-item"><strong>G</strong> — filled + arrow</span>
-  <span class="legend-item"><strong>H</strong> — outline + arrow</span>
-  <span class="legend-item"><strong>I</strong> — mono filled (most on-brand)</span>
+  <span class="li"><strong>Q</strong> Marquee scroll</span>
+  <span class="li"><strong>R</strong> Barcode</span>
+  <span class="li"><strong>S</strong> Git diff +</span>
+  <span class="li"><strong>T</strong> Blink cursor</span>
+  <span class="li"><strong>U</strong> Full-width stamp</span>
+  <span class="li"><strong>V</strong> Double border</span>
+  <span class="li"><strong>W</strong> Corner brackets</span>
+  <span class="li"><strong>X</strong> Code comment //</span>
+  <span class="li"><strong>Y</strong> Stacked label</span>
+  <span class="li"><strong>Z</strong> Scanline fill</span>
+  <span class="li"><strong>AA</strong> Overprint blocks</span>
+  <span class="li"><strong>AB</strong> Live status dot</span>
 </div>
 
 </body>

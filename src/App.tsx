@@ -13,7 +13,7 @@ const DEFAULT_CONFIG: AdConfig = {
   background: 'none',
   sizeKey: '1:1',
   showLogo: true,
-  ctaStyle: 'filled',
+  ctaStyle: 'filled-arrow',
   logoPosition: 'top-left',
   copy: {},
   imageUrl: null,

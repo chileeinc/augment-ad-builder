@@ -46,6 +46,13 @@
 .template-thumb.active .template-thumb-name { color: var(--color-accent); }
 
 /* CopyFields */
+.copy-field-label-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.copy-field-label-row label { margin-bottom: 0; }
+
 .copy-purpose-hint {
   font-family: var(--font-mono);
   font-size: 10px; color: var(--color-accent);
@@ -56,7 +63,7 @@
 .copy-field { margin-bottom: 10px; }
 .copy-field label {
   display: block; font-size: 11px;
-  color: var(--color-fg); margin-bottom: 4px;
+  color: var(--color-fg);
 }
 .copy-field input,
 .copy-field textarea {
@@ -70,6 +77,36 @@
 }
 .copy-field input:focus,
 .copy-field textarea:focus { border-color: var(--color-accent); }
+
+.cta-input-row {
+  display: flex;
+  gap: 0;
+}
+.cta-input-row input {
+  flex: 1;
+  min-width: 0;
+  border-right: none;
+}
+.cta-wand-btn {
+  flex-shrink: 0;
+  width: 36px;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-left: none;
+  color: var(--color-fg-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.1s, background 0.1s, border-color 0.1s;
+}
+.cta-wand-btn:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent);
+}
+.cta-input-row input:focus { border-color: var(--color-accent); }
+.cta-input-row input:focus + .cta-wand-btn { border-color: var(--color-accent); }
 .copy-field textarea { height: 60px; }
 .copy-char-count {
   font-size: 10px; color: var(--color-fg-dim);
@@ -84,7 +121,7 @@
   color: var(--color-fg-dim);
   margin-bottom: 6px; margin-top: 10px;
 }
-.cta-style-swatches { display: flex; gap: 6px; margin-bottom: 10px; }
+.cta-style-swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-bottom: 10px; }
 .cta-style-swatch {
   flex: 1; height: 28px;
   border: 1.5px solid var(--color-border-subtle);

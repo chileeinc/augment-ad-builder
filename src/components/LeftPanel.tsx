@@ -1,7 +1,7 @@
-import type { AdConfig, TemplateId, Theme, Background, CtaStyle, LogoPosition } from '../lib/types'
+import type { AdConfig, TemplateId, Theme, Background, LogoPosition } from '../lib/types'
 import TemplatePicker from './TemplatePicker'
 import AppearancePanel from './AppearancePanel'
-import CopyFields from './CopyFields'
+import CopyFields, { CTA_STYLES } from './CopyFields'
 import ImageLibrary from './ImageLibrary'
 import './LeftPanel.css'
 
@@ -12,6 +12,12 @@ interface Props {
 }
 
 export default function LeftPanel({ config, onChange, onReset }: Props) {
+  function shuffleCtaStyle() {
+    const others = CTA_STYLES.filter(s => s !== config.ctaStyle)
+    const next = others[Math.floor(Math.random() * others.length)]
+    onChange({ ctaStyle: next })
+  }
+
   return (
     <aside className="left-panel">
       <TemplatePicker
@@ -23,18 +29,17 @@ export default function LeftPanel({ config, onChange, onReset }: Props) {
         theme={config.theme}
         background={config.background}
         showLogo={config.showLogo}
-        ctaStyle={config.ctaStyle}
         logoPosition={config.logoPosition}
         onThemeChange={(theme: Theme) => onChange({ theme })}
         onBackgroundChange={(background: Background) => onChange({ background })}
         onLogoChange={(showLogo: boolean) => onChange({ showLogo })}
-        onCtaStyleChange={(ctaStyle: CtaStyle) => onChange({ ctaStyle })}
         onLogoPositionChange={(logoPosition: LogoPosition) => onChange({ logoPosition })}
       />
       <CopyFields
         template={config.template}
         copy={config.copy}
         onChange={(copy) => onChange({ copy })}
+        onCtaStyleShuffle={shuffleCtaStyle}
       />
       <ImageLibrary
         selectedUrl={config.imageUrl}

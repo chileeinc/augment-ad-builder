@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA — Keeps + Refining</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --g400: #1AA049; --g200: #99F7A9; --g700: #002400;
+    --dbg: #0a0a0b; --dfg: #f5f5f7;
+    --lbg: #ffffff; --lfg: #111111;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  body { background: #0f0f10; color: #e8e8ec; font-family: var(--mono); padding: 40px 32px 80px; }
+
+  .page-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--g400); margin-bottom: 10px; }
+  .page-title { font-size: 26px; font-weight: 300; letter-spacing: -0.02em; color: #f5f5f7; margin-bottom: 6px; font-family: var(--sans); }
+  .page-sub { font-size: 11px; color: #444; margin-bottom: 48px; }
+
+  .section-rule { height: 1px; background: #1a1a22; margin: 40px 0 28px; }
+  .section-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; color: #2a2a3a; margin-bottom: 28px; }
+
+  .option { margin-bottom: 40px; }
+  .option-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #1a1a22; }
+  .option-name { font-size: 13px; font-weight: 500; color: #f5f5f7; font-family: var(--sans); }
+  .badge { font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; padding: 2px 6px; border: 1px solid; }
+  .badge.keep { color: var(--g400); border-color: #1a3520; background: #0a1a0e; }
+  .badge.new  { color: #ff6b35; border-color: #3a1a0a; background: #1a0a05; }
+  .option-desc { font-size: 11px; color: #444; }
+
+  .theme-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .tc { padding: 24px 20px; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden; }
+  .tc.dark  { background: var(--dbg); border: 1px solid #1e1e26; }
+  .tc.light { background: var(--lbg); border: 1px solid #e0e0e4; }
+  .tc.tonal { background: var(--g700); border: 1px solid #0d2a0d; }
+  .tlabel { font-size: 8px; text-transform: uppercase; letter-spacing: 0.1em; position: absolute; top: 8px; right: 10px; }
+  .dark .tlabel  { color: #222; } .light .tlabel { color: #ddd; } .tonal .tlabel { color: #1a4a1a; }
+
+  .snip { display: flex; flex-direction: column; gap: 6px; }
+  .h { font-size: 17px; font-weight: 300; letter-spacing: -0.025em; line-height: 1.15; font-family: var(--sans); }
+  .dark  .h { color: var(--dfg); } .light .h { color: var(--lfg); } .tonal .h { color: var(--g200); }
+  .b { font-size: 10px; line-height: 1.5; font-family: var(--sans); }
+  .dark  .b { color: #555; } .light .b { color: #999; } .tonal .b { color: #2a5a2a; }
+  .ca { margin-top: 2px; }
+
+  /* ── shared CTA text size ── */
+  .cta-text {
+    font-family: var(--mono); font-size: 9px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+
+  /* G — Filled + Arrow */
+  .cta-g { display:inline-flex; align-items:center; gap:9px; padding:8px 14px 8px 18px; border:none; border-radius:2px; cursor:pointer; background:var(--g400); color:#0a0a0b; }
+  .tonal .cta-g { background:var(--g200); color:var(--g700); }
+
+  /* I — Mono Wide */
+  .cta-i { display:inline-block; padding:9px 22px; border:none; cursor:pointer; background:var(--g400); color:#0a0a0b; letter-spacing:0.14em; }
+  .tonal .cta-i { background:var(--g200); color:var(--g700); }
+
+  /* J — Terminal */
+  .cta-j { display:inline-flex; align-items:center; gap:0; background:transparent; border:none; cursor:pointer; padding:0; }
+  .cta-j .pr { margin-right:8px; }
+  .dark  .cta-j { color:var(--dfg); } .dark  .cta-j .pr { color:var(--g400); }
+  .light .cta-j { color:var(--lfg); } .light .cta-j .pr { color:var(--g400); }
+  .tonal .cta-j { color:var(--g200); } .tonal .cta-j .pr { opacity:0.5; }
+
+  /* K — Bracket */
+  .cta-k { display:inline-flex; align-items:center; background:transparent; border:none; cursor:pointer; padding:0; }
+  .cta-k .br { font-size:13px; font-weight:300; }
+  .dark  .cta-k { color:var(--dfg); } .dark  .cta-k .br { color:var(--g400); }
+  .light .cta-k { color:var(--lfg); } .light .cta-k .br { color:var(--g400); }
+  .tonal .cta-k { color:var(--g200); } .tonal .cta-k .br { opacity:0.6; }
+
+  /* W — Corner Brackets */
+  .cta-w { display:inline-block; position:relative; padding:10px 16px; cursor:pointer; background:transparent; border:none; }
+  .cta-w::before,.cta-w::after,.cta-w span::before,.cta-w span::after { content:''; position:absolute; width:8px; height:8px; }
+  .dark  .cta-w::before,.dark  .cta-w::after,.dark  .cta-w span::before,.dark  .cta-w span::after { border-color:var(--g400); }
+  .light .cta-w::before,.light .cta-w::after,.light .cta-w span::before,.light .cta-w span::after { border-color:var(--g400); }
+  .tonal .cta-w::before,.tonal .cta-w::after,.tonal .cta-w span::before,.tonal .cta-w span::after { border-color:var(--g200); }
+  .cta-w::before   { top:0; left:0; border-top:1.5px solid; border-left:1.5px solid; }
+  .cta-w::after    { top:0; right:0; border-top:1.5px solid; border-right:1.5px solid; }
+  .cta-w span::before { bottom:0; left:0; border-bottom:1.5px solid; border-left:1.5px solid; }
+  .cta-w span::after  { bottom:0; right:0; border-bottom:1.5px solid; border-right:1.5px solid; }
+  .dark  .cta-w { color:var(--dfg); } .light .cta-w { color:var(--lfg); } .tonal .cta-w { color:var(--g200); }
+
+  /* ── Q2 — true bleed both sides, same color both rows, staggered ── */
+  .cta-q2 {
+    /* pull out of the 20px card padding on both sides */
+    margin-left: -20px;
+    margin-right: -20px;
+    display: flex; flex-direction: column; gap: 3px;
+    cursor: pointer; background: transparent; border: none; padding: 0;
+  }
+  .cta-q2 .row {
+    display: block; white-space: nowrap;
+    font-family: var(--mono); font-size: 10px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  /* row 1: slight left indent so it starts mid-bleed on left */
+  .cta-q2 .r1 { padding-left: 6px; }
+  /* row 2: pushed further left so words are offset from row 1 */
+  .cta-q2 .r2 { padding-left: 0; transform: translateX(-38px); }
+  .dark  .cta-q2 .row { color: var(--g400); }
+  .light .cta-q2 .row { color: var(--g400); }
+  .tonal .cta-q2 .row { color: var(--g200); }
+
+  /* ── BARCODE v4 — 3 rows, staggered heights, label on middle row ── */
+  /* Heights: top=22px, middle=14px (shortest), bottom=18px */
+  .cta-barcode {
+    display: inline-flex; flex-direction: column; gap: 3px;
+    cursor: pointer; background: transparent; border: none; padding: 0;
+  }
+
+  .bc-row { display: flex; align-items: flex-end; gap: 1px; }
+
+  /* each row has its own bar height */
+  .bc-row.top    .bc-bar { height: 22px; }
+  .bc-row.mid    .bc-bar { height: 14px; }
+  .bc-row.bottom .bc-bar { height: 18px; }
+
+  /* mid row: flex with label */
+  .bc-row.mid {
+    display: flex; align-items: center; gap: 0;
+  }
+  .bc-mid-bars { display: flex; align-items: stretch; gap: 1px; }
+  .bc-mid-bars .bc-bar { height: 14px; }
+
+  .bc-bar { flex-shrink: 0; display: block; }
+  .bc-bar.w1 { width: 2px; }
+  .bc-bar.w2 { width: 3px; }
+  .bc-bar.w3 { width: 5px; }
+
+  .dark  .bc-bar { background: var(--g400); }
+  .light .bc-bar { background: var(--g400); }
+  .tonal .bc-bar { background: var(--g200); }
+
+  .bc-label {
+    font-family: var(--mono); font-size: 9px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    white-space: nowrap; padding-left: 10px;
+  }
+  .dark  .bc-label { color: var(--dfg); }
+  .light .bc-label { color: var(--lfg); }
+  .tonal .bc-label { color: var(--g200); }
+</style>
+</head>
+<body>
+
+<div class="page-eyebrow">Ad Builder — CTA Review</div>
+<h1 class="page-title">5 Keeps + Q2 + Barcode</h1>
+<p class="page-sub">A D H removed · all text same 9px mono size · Q2 true bleed, same color · barcode label on middle row</p>
+
+<!-- G -->
+<div class="option"><div class="option-header"><span class="option-name">G — Filled + Arrow</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-g cta-text">Try Free →</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-g cta-text">Try Free →</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-g cta-text">Try Free →</button></div></div>
+</div></div>
+
+<!-- I -->
+<div class="option"><div class="option-header"><span class="option-name">I — Mono Wide</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-i cta-text">Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-i cta-text">Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-i cta-text">Try Free</button></div></div>
+</div></div>
+
+<!-- J -->
+<div class="option"><div class="option-header"><span class="option-name">J — Terminal Prompt</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-j cta-text"><span class="pr">&gt;</span> Try Free</button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-j cta-text"><span class="pr">&gt;</span> Try Free</button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-j cta-text"><span class="pr">&gt;</span> Try Free</button></div></div>
+</div></div>
+
+<!-- K -->
+<div class="option"><div class="option-header"><span class="option-name">K — Bracket Notation</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-k cta-text"><span class="br">[</span>&nbsp;Try Free&nbsp;<span class="br">]</span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-k cta-text"><span class="br">[</span>&nbsp;Try Free&nbsp;<span class="br">]</span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-k cta-text"><span class="br">[</span>&nbsp;Try Free&nbsp;<span class="br">]</span></button></div></div>
+</div></div>
+
+<!-- W -->
+<div class="option"><div class="option-header"><span class="option-name">W — Corner Brackets</span><span class="badge keep">Keep</span></div>
+<div class="theme-row">
+  <div class="tc dark"><span class="tlabel">Dark</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-w"><span class="cta-text">Try Free</span></button></div></div>
+  <div class="tc light"><span class="tlabel">Light</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-w"><span class="cta-text">Try Free</span></button></div></div>
+  <div class="tc tonal"><span class="tlabel">Tonal</span><div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div><div class="ca"><button class="cta-w"><span class="cta-text">Try Free</span></button></div></div>
+</div></div>
+
+<div class="section-rule"></div>
+<p class="section-label">— In Progress —</p>
+
+<!-- Q2 -->
+<div class="option">
+  <div class="option-header"><span class="option-name">Q2 — Two Rows, Staggered Bleed</span><span class="badge new">Refining</span><span class="option-desc">Both rows same color. Both bleed past card edges. Row 2 offset so words never line up.</span></div>
+  <div class="theme-row">
+    <div class="tc dark"><span class="tlabel">Dark</span>
+      <div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div>
+      <div class="ca">
+        <button class="cta-q2">
+          <div class="row r1">TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT</div>
+          <div class="row r2">NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY</div>
+        </button>
+      </div>
+    </div>
+    <div class="tc light"><span class="tlabel">Light</span>
+      <div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div>
+      <div class="ca">
+        <button class="cta-q2">
+          <div class="row r1">TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT</div>
+          <div class="row r2">NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY</div>
+        </button>
+      </div>
+    </div>
+    <div class="tc tonal"><span class="tlabel">Tonal</span>
+      <div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div>
+      <div class="ca">
+        <button class="cta-q2">
+          <div class="row r1">TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT</div>
+          <div class="row r2">NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY AUGMENT NOW · TRY</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BARCODE v4 -->
+<div class="option">
+  <div class="option-header"><span class="option-name">R — Barcode v4</span><span class="badge new">Refining</span><span class="option-desc">Top: tall bars. Middle: shortest bars + label. Bottom: medium bars. Matches reference.</span></div>
+  <div class="theme-row">
+
+    <div class="tc dark"><span class="tlabel">Dark</span>
+      <div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div>
+      <div class="ca">
+        <button class="cta-barcode">
+          <!-- Row 1: tallest -->
+          <div class="bc-row top">
+            <div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div>
+          </div>
+          <!-- Row 2: shortest + label -->
+          <div class="bc-row mid">
+            <div class="bc-mid-bars">
+              <div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div>
+            </div>
+            <span class="bc-label">See In Action</span>
+          </div>
+          <!-- Row 3: medium -->
+          <div class="bc-row bottom">
+            <div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="tc light"><span class="tlabel">Light</span>
+      <div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div>
+      <div class="ca">
+        <button class="cta-barcode">
+          <div class="bc-row top">
+            <div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div>
+          </div>
+          <div class="bc-row mid">
+            <div class="bc-mid-bars">
+              <div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div>
+            </div>
+            <span class="bc-label">See In Action</span>
+          </div>
+          <div class="bc-row bottom">
+            <div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="tc tonal"><span class="tlabel">Tonal</span>
+      <div class="snip"><div class="h">Code faster with AI</div><div class="b">Augment indexes your repo.</div></div>
+      <div class="ca">
+        <button class="cta-barcode">
+          <div class="bc-row top">
+            <div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div>
+          </div>
+          <div class="bc-row mid">
+            <div class="bc-mid-bars">
+              <div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div>
+            </div>
+            <span class="bc-label">See In Action</span>
+          </div>
+          <div class="bc-row bottom">
+            <div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w3"></div><div class="bc-bar w1"></div><div class="bc-bar w2"></div><div class="bc-bar w1"></div><div class="bc-bar w1"></div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

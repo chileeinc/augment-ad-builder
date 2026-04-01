@@ -2,7 +2,7 @@ export type Platform = 'instagram' | 'linkedin' | 'twitter'
 export type TemplateId = 'big-headline' | 'quote-ad'
 export type Theme = 'dark' | 'light' | 'tonal'
 export type Background = 'none' | 'dot-grid' | 'grid'
-export type CtaStyle = 'filled' | 'outline' | 'text-link'
+export type CtaStyle = 'filled-arrow' | 'mono-wide' | 'terminal' | 'corner-brackets' | 'ticker' | 'barcode'
 export type LogoPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
 
 export interface AdSize {
