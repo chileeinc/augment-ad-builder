@@ -21,17 +21,14 @@
 }
 .cq-quote-mark {
   font-size: min(10cqw, 17.5cqh); color: var(--ad-accent);
-  line-height: 1; display: inline-block;
-  margin-right: min(1cqw, 1cqh); vertical-align: min(-1cqw, -1cqh);
+  line-height: 1;
   font-weight: 300;
+  margin-bottom: min(1cqw, 1.5cqh);
 }
 .cq-attribution {
   flex-shrink: 0;
 }
 .cq-name-tag {
-  display: inline-block;
-  border: 1px solid var(--ad-border);
-  padding: min(1cqw, 1.5cqh) min(2.5cqw, 4cqh);
   font-family: var(--font-mono);
   font-size: min(2.2cqw, 4cqh);
   text-transform: uppercase;

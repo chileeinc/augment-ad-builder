@@ -9,9 +9,10 @@ import './LeftPanel.css'
 interface Props {
   config: AdConfig
   onChange: (patch: Partial<AdConfig>) => void
+  onReset: () => void
 }
 
-export default function LeftPanel({ config, onChange }: Props) {
+export default function LeftPanel({ config, onChange, onReset }: Props) {
   return (
     <aside className="left-panel">
       <PurposePicker
@@ -39,6 +40,9 @@ export default function LeftPanel({ config, onChange }: Props) {
         selectedUrl={config.imageUrl}
         onSelect={(imageUrl) => onChange({ imageUrl })}
       />
+      <div className="reset-row">
+        <button className="reset-btn" onClick={onReset}>Reset</button>
+      </div>
     </aside>
   )
 }

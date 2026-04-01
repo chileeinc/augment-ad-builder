@@ -154,6 +154,29 @@
   transition: border-color 0.1s, color 0.1s;
 }
 .upload-tile:hover { border-color: var(--color-accent); color: var(--color-accent); }
+/* Reset */
+.reset-row {
+  padding: 12px 0 4px;
+  border-top: 1px solid var(--color-border-subtle);
+  margin-top: 4px;
+}
+.reset-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-fg-dim);
+  background: none;
+  border: 1px solid var(--color-border-subtle);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: color 0.1s, border-color 0.1s;
+}
+.reset-btn:hover {
+  color: var(--color-fg);
+  border-color: var(--color-fg-dim);
+}
+
 .upload-error {
   font-size: 10px; font-family: var(--font-mono);
   color: #f87171; background: #1a0a0a;

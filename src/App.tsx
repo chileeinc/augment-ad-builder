@@ -31,6 +31,10 @@ export default function App() {
     setConfig(c => ({ ...c, ...patch }))
   }
 
+  function resetConfig() {
+    setConfig(DEFAULT_CONFIG)
+  }
+
   return (
     <div className="app">
       <header className="topbar">
@@ -40,7 +44,7 @@ export default function App() {
       </header>
       <PlatformTabs value={config.platform} onChange={handlePlatformChange} />
       <div className="main">
-        <LeftPanel config={config} onChange={updateConfig} />
+        <LeftPanel config={config} onChange={updateConfig} onReset={resetConfig} />
         <RightPanel
           config={config}
           previewRef={previewRef}

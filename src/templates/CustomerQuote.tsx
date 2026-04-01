@@ -12,7 +12,8 @@ export default function CustomerQuote({ config }: Props) {
       <div className="cq-content">
         {copy.quote && (
           <div className="cq-quote">
-            <span className="cq-quote-mark">"</span>{copy.quote}
+            <div className="cq-quote-mark">"</div>
+            {copy.quote}
           </div>
         )}
       </div>
